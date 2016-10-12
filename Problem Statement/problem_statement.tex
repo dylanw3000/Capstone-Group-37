@@ -5,7 +5,7 @@
 \usepackage[margin=0.75in]{geometry}
 
 \title{Object Velocity Tracking}
-\author{Alex Bailey, Ben Wick, Dylan Washburne\\CS 461, Fall Term}
+\author{Alex Bailey, Ben Wick, Dylan WashburneCS 461, Fall Term}
 
 \begin{document}
 
@@ -14,7 +14,10 @@
 \maketitle
 
 \begin{abstract}
-Using a camera mounted on a car, we are attempting to determine the speeds of other nearby vehicles.  This will be done by having the camera recognize nearby vehicles and determining their speeds relative to our own vehicle. To make this work, we will have to research the Kinect and how it processes images, aw well as how we can determine what in the field of view is a vehicle, and how fast it is moving relative to us.
+Using a stationary camera, with the intent of being mounted on a car, we are attempting to determine the speeds of other nearby objects.
+This will be done by having the camera recognize nearby objects and determining their speeds based on the rate at which they travel through the frame.
+To make this work, we will have to research the varieties of cameras available to use, as well as the apis they operate with.
+From this, we will determine the camera to be used and from there create a speed tracking program.
 \end{abstract}
 
 \end{titlepage}
@@ -26,7 +29,11 @@ Current methods include radar guns and laser scanners, however, speed tracking m
 Primary among these issues is that radar and similar methods suffer heavily from poor weather conditions.
 Methods like these are also only capable of tracking one object at a time.
 
-%Distance is maybe an issue to look for?
+In our modern society, these shortcomings are no longer acceptable.
+We have used the methods provided to us because there were no other options to work with.
+We have finally hit a point where we can improve on what currently exists, and as such, we must work to improve.
+
+%Distance is maybe an issue to look for
 
 \section{Proposed Solution}
 
@@ -34,14 +41,20 @@ We are going to use a camera to track the speed of a passing object.
 The camera will be able to track passing objects and display their current speeds to the user.
 The camera will also be able to accurately dect the speeds of passing objects during inclement weather conditions, such as heavy fog, in which other methods would return bad results.
 
+The camera used is yet to be determined, however we can select the camera to use by examining the strengths and shortcomings presented.
+After selecting a camera, we will work with the camera's api to determine object recognition.
+From there, we will gague the object's speed based on its movement in-frame, so that we can return instantaneous results to the user.
+
 \section{Performance Metrics}
 
-Detect nearby objects which can be tracked.
-Track the nearby object to determine velocity, and return the value within 10\% of its actual speed.
+Our solution will be able to detect nearby objects which can be tracked.
+The camera will then track the nearby object to determine velocity, and return the value within 10% of its actual speed.
+
+If possible, the solution will also be able to perform this on multiple objects simultaneously.
+We will also work to make the results displayed to the user appear instantaneously, with as little required lag as possible.
 
 
-
-%Applications somewhere maybe?
+%Applications somewhere maybe
 
 
 \end{document}
