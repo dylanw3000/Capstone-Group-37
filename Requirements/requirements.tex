@@ -33,7 +33,8 @@ The purpose of this document is to present a detailed description of the require
 This document is intended for the main use of the client, as well as the professor and the teacher assistants and will be proposed to the client for its approval.
 
 \subsection{Scope}
-
+Our system, the ____, will be able to identify a specific type of object, such as a person or a car, calculate the object's speed, then display the speed on the screen.
+Our system will be beneficial over other systems in that it can function unmanned, will specify which target is being tracked, and will be able to track multiple objects.
 \subsection{Definitions, acronyms, and abbreviations}
 \begin{tabular}{|p{4cm}|p{12cm}|}
 	\hline
@@ -60,7 +61,15 @@ This section contains all the software requirements.
 %Beginning of overall desciption
 \section{Overall description}
 \subsection{Product perspective}
-
+Our system is a self-contained product. 
+Our system's interface will consist of a window where the user can activate the camera and speed tracking.
+There will be buttons to stop and start the camera. 
+There will be a menu bar that will allow the user to specify aspects of the system.
+Our systems window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons.
+There will be a row of drop down menus at the top.
+We will be using computer vision software in order to identify the type of object and track its location across the frame.
+The system will have only one mode of operation, the on mode, where the system constantly processes the images from the camera and speed is displayed.
+This mode requires no input from the user except to turn off.
 \subsection{Product functions}
 The software will be connected to a camera with a live video feed.
 It will than be able to detect objects that are specified for the users needs.
