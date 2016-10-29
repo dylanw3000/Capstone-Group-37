@@ -108,7 +108,28 @@ Should the video be live streamed to a remote location, it must enter a stable c
 \subsection{Assumptions and dependencies}
 We assume that if our systems camera needs to move that our system would be able to either handle the motion of the camera and still be able to track speeds or be mounted securely enough to minimize motion of the camera, allowing the system to track speeds.
 We assume that the computer vision software will be able to recognize an object within enough time after entering the frame so that there will be enough time for the speed algorithm to calculate the speed.
+
 %Beginning of specific requirments
 \section{Specific requirements}
+%I don't know about the "cross-reference" part, I'm just ignoring that for now
+The product must be able to identify objects in frame, and differentiate them from the background.
+The product must identify desired objects at least 70\% of the time while they are in frame.
+
+The product must be able to track the speeds of identified objects.
+For each object identified in the scene, the speed the program displays to the user must be within 90\% of the objects true speed.
+
+The product must have the capability to identify and track multiple objects simultaneously.
+It must be able to track as many objects as it can identify, however we would like the product to be able to identify up to 6 objects at once under most setup conditions. 
+At the same time, should the proper conditions present themselves, the product should be able to automatically identify as many objects it can locate in frame, should that number exceed 6.
+
+%Parallel and perpinduicular
+The product should be able to perform its speed analysis on objects that are moving in various directions.
+While it should track the speeds of objects moving perpindicular to the camera, it should also be able to identify the speeds of objects moving parallel to the camera, or at any variation in between.
+The speeds returned are within 90\% as stated above, however direction should not cause the product to fail its purpose.
+
+%Max effective view distance of 100m
+The product will accurately work within 100m of the camera's placement.
+Objects within 100m of the camera's placement, within its view angle and with an unonstructed line of sight, should all be able to be identified by the camera, reflecting the accuracy requirements described above.
+Objects beyond the maximum effective range can potentially still be identified if the conditions allow, but are not granted the same accuracy guaranty.
 
 \end{document}
