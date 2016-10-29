@@ -106,7 +106,8 @@ If the video data is to be saved locally, it should also respect encryption of t
 Should the video be live streamed to a remote location, it must enter a stable connection to deliver to the intended viewer.
 
 \subsection{Assumptions and dependencies}
-
+We assume that if our systems camera needs to move that our system would be able to either handle the motion of the camera and still be able to track speeds or be mounted securely enough to minimize motion of the camera, allowing the system to track speeds.
+We assume that the computer vision software will be able to recognize an object within enough time after entering the frame so that there will be enough time for the speed algorithm to calculate the speed.
 %Beginning of specific requirments
 \section{Specific requirements}
 
