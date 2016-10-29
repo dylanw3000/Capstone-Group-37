@@ -29,22 +29,57 @@ From this, we will determine the best camera to be used and from there create a 
 %Beginning of introduction
 \section{Introduction}
 \subsection{Purpose}
+The purpose of this document is to present a detailed description of the requirements for the "Video Radar" software.
+This document is intended for the main use of the client, as well as the professor and the teacher assistants and will be proposed to the client for its approval.
 
 \subsection{Scope}
 
 \subsection{Definitions, acronyms, and abbreviations}
+\begin{tabular}{|p{4cm}|p{12cm}|}
+	\hline
+	\textbf{Term} & \textbf{Definition} \\
+	\hline
+	API (Application program interface) & A particular set of rules and specifications that software programs can follow to communicate with each other. \\
+	\hline
+	User & Someone who is interacting with the software. \\
+	\hline
+	Object & The entity being tracked by the video feed.  \\
+	\hline
+	
+\end{tabular}
 
 \subsection{References}
 
 \subsection{Overview}
-
+The rest of the document contains two additional sections.
+The first section is the overall description.
+This section will describe the intended use of the software and give background.
+The last section is the specific requirements section.
+This section contains all the software requirements.
 
 %Beginning of overall desciption
 \section{Overall description}
 \subsection{Product perspective}
+
 \subsection{Product functions}
+The software will be connected to a camera with a live video feed.
+It will than be able to detect objects that are specified for the users needs.
+The software will than be able to acquire the speed at which they are traveling.
+This information will be stored into a table for the user to see.
+
+
 \subsection{User characteristics}
+This software is intended to be used by many different users.
+The types of users are broken down into two categories: users who wish to track cars, users who wish to track people.
+These users have different use for the system but the software should work the same way for both users.\\
+
+Users who wish to track cars may use the software to detect the speed of a moving car on the road.
+This means the user will set the stationary camera and point it in the direction of moving vehicles to obtain the speed.\\
+
+Users who wish to track the speed of people may also use the software.
+These users will follow the same procedure as the other users but instead, the software will detect the speed of people.
 \subsection{Constraints}
+
 \subsection{Assumptions and dependencies}
 
 %Beginning of specific requirments
