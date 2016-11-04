@@ -3,6 +3,9 @@
 
 \usepackage[english]{babel}
 \usepackage[margin=0.75in]{geometry}
+\usepackage{graphicx}
+
+\DeclareGraphicsExtensions{.png}
 
 \title{Object Velocity Tracking Requirements Document}
 \author{Alex Bailey, Ben Wick, Dylan Washburne\\CS 461, Fall Term}
@@ -69,16 +72,23 @@ This section contains all the software requirements.
 \subsection{Product perspective}
 Our product is a self-contained product. 
 Our product's interface will consist of a window where the user can activate the camera and velocity tracking.
-There will be buttons in the application window to stop and start the camera. 
-There will be a menu bar in the application that will allow the user to specify aspects of the product.
-Our products application window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons.
-There will be a row of drop down menus at the top.
+There will be a menu bar in the application that will allow the user to specify aspects of the product, as shown by Section C in the picture A below.
+Our products application window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons, as depicted in Section B of picture A below.
+The application will have a central section for displaying the video captured by the camera with our information overlay, such as Section A of picture A below.
 We will be using computer vision software in order to identify the type of object and track its location across the frame.
 The product will have only one mode of operation, the on mode, where the product constantly processes the images from the camera and velocity is displayed.
 This mode requires no input from the user except to turn off.
 The camera will not have any automated motion.
 The user will have to manually adjust the camera.
 The camera will have a fixed zoom that the user will not be able to change.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{cs_461_mock_up}
+    \caption{Picture A: Mock up of Application window}
+    \label{fig: pic_a}
+\end{figure}
+
 
 \subsection{Product functions}
 The software will be connected to a camera with a live video feed.
@@ -105,7 +115,7 @@ As a result, our product will either need to come with a dedicated computer to d
 In accordance with federal laws, the camera is allowed to be recording anything described as "within plain sight".
 The proper use of this falls on the user, and must be disclaimed before use.
 
-The product's reliability on use can be described in a number of ways.
+The product's reliability of use can be described in a number of ways.
 The camera should be recording at a constant and stable rate.
 The objects in the scene should be properly identified with 70\% accuracy.
 The tracking of an identified object's velocity should be within 90\% of the objects actual velocity.
