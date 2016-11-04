@@ -44,12 +44,12 @@ This document is intended for the main use of the client, as well as the profess
 \subsection{Scope}
 Our product, the "Video Radar", will be able to identify a specific type of object, such as a person or a car, calculate the object's velocity, then display the velocity on the screen.
 Our product will be beneficial over other products in that it can function unmanned, will specify which target is being tracked, and will be able to track multiple objects.
-\subsection{Definitions, acronyms, and abbreviations}
+\subsection{Definitions, Acronyms, and Abbreviations}
 \begin{tabular}{|p{4cm}|p{12cm}|}
 	\hline
 	\textbf{Term} & \textbf{Definition} \\
 	\hline
-	API (Application program interface) & A particular set of rules and specifications that software programs can follow to communicate with each other. \\
+	API (Application Program Interface) & A particular set of rules and specifications that software programs can follow to communicate with each other. \\
 	\hline
 	User & Someone who is interacting with the software. \\
 	\hline
@@ -68,9 +68,9 @@ The last section is the specific requirements section.
 This section contains all the software requirements.
 
 %Beginning of overall desciption
-\section{Overall description}
-\subsection{Product perspective}
-Our product is a self-contained product. 
+\section{Overall Description}
+\subsection{Product Perspective}
+Our product will be a self-contained product. 
 Our product's interface will consist of a window where the user can activate the camera and velocity tracking.
 There will be a menu bar in the application that will allow the user to specify aspects of the product, as shown by Section C in the picture A below.
 Our products application window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons, as depicted in Section B of picture A below.
@@ -85,22 +85,23 @@ The camera will have a fixed zoom that the user will not be able to change.
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.75]{cs_461_mock_up}
-    \caption{Picture A: Mock up of Application window}
+    \caption{Picture A: Mock-Up of the Application Window}
     \label{fig: pic_a}
 \end{figure}
 
 
-\subsection{Product functions}
+\subsection{Product Functions}
 The software will be connected to a camera with a live video feed.
 It will then be able to detect objects that are specified for the users needs.
 The software will than be able to acquire the velocity at which the objects are traveling.
 %This information will be stored into a table for the user to see.
 
 
-\subsection{User characteristics}
-This software is intended to be used by many different users.
-The types of users are broken down into two categories: users who wish to track cars, users who wish to track people.
-These users have different use for the product but the software should work the same way for both users.
+%REWRITE 
+\subsection{User Characteristics}
+%This software is intended to be used by many different users.
+%The types of users are broken down into two categories: users who wish to track cars, users who wish to track people.
+%These users have different use for the product but the software should work the same way for both users.
 
 Users who wish to track cars may use the product to detect the velocity of a moving car on the road.
 This means the user will set the stationary camera and point it in the direction of moving vehicles to obtain the velocity.
@@ -125,12 +126,12 @@ While the video recorded is protected by federal laws, the information nonethele
 If the video data is to be saved locally, it should also respect encryption of the product it is saved on.
 Should the video be live streamed to a remote location, it must enter a stable connection to deliver to the intended viewer.
 
-\subsection{Assumptions and dependencies}
+\subsection{Assumptions and Dependencies}
 We assume that if our products camera needs to move that our product would be able to either handle the motion of the camera and still be able to track velocities or be mounted securely enough to minimize motion of the camera, allowing the product to track velocities.
 We assume that the computer vision software will be able to recognize an object within enough time after entering the frame so that there will be enough time for the velocity algorithm to calculate the velocity.
 
 %Beginning of specific requirments
-\section{Specific requirements}
+\section{Specific Requirements}
 %I don't know about the "cross-reference" part, I'm just ignoring that for now
 The product must be able to identify objects in frame, and differentiate them from the background.
 %The product must identify desired objects at least 70\% of the time while they are in frame.
@@ -147,7 +148,7 @@ At the same time, should the proper conditions present themselves, the product s
 %Parallel and perpinduicular
 The product should be able to perform its velocity analysis on objects that are moving in various directions.
 While it should track the velocities of objects moving perpindicular to the camera, it should also be able to identify the velocities of objects moving parallel to the camera, or at any variation in between.
-The velocities returned are within 90\% as stated above, however direction should not cause the product to fail its purpose.
+The velocities returned are within 90\% of the objects' true speeds, as stated above, however direction should not cause the product to fail its purpose.
 
 %Max effective view distance of 100m
 The product will accurately work within 100m of the camera's placement.
