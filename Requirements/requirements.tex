@@ -18,13 +18,13 @@
 Using a stationary camera, we are attempting to detect objects and determine the velocities of those objects relative to the Observer (camera).
 This will be done by having the camera recognize a specific type of object, yet to be determined, in space and determine their velocities based on the rate at which they travel through the frame.
 The speed of the objects will be displayed on a computer application window.
-%If the camera is on a moving object, then we will need to either have a way for the system to measure it's own velocity, likely with an accelerometer or connect to the object, if the object is measuring it's own velocity.
+%If the camera is on a moving object, then we will need to either have a way for the product to measure it's own velocity, likely with an accelerometer or connect to the object, if the object is measuring it's own velocity.
 To make this work, we will have to research the varieties of cameras available to use, as well as the API’s they operate with.
 %We will also have to review the available computer vision software and determine which is the most appropriate for our needs.
 We will review the available computer vision software and determine which is the most appropriate for our needs.
 We will also design a computer application that will be the user interface for the product.
 %From this, we will determine the best camera to be used and from there create a object tracking program.
-From these we will create an object tracking program.
+From these we will create an object tracking program that will not have the shortcomings of the current object tracking methods, such as being only able to track one object and having trouble in the rain.
 
  
 \end{abstract}
@@ -39,8 +39,8 @@ The purpose of this document is to present a detailed description of the require
 This document is intended for the main use of the client, as well as the professor and the teacher assistants and will be proposed to the client for its approval.
 
 \subsection{Scope}
-Our system, the "Video Radar", will be able to identify a specific type of object, such as a person or a car, calculate the object's velocity, then display the velocity on the screen.
-Our system will be beneficial over other systems in that it can function unmanned, will specify which target is being tracked, and will be able to track multiple objects.
+Our product, the "Video Radar", will be able to identify a specific type of object, such as a person or a car, calculate the object's velocity, then display the velocity on the screen.
+Our product will be beneficial over other products in that it can function unmanned, will specify which target is being tracked, and will be able to track multiple objects.
 \subsection{Definitions, acronyms, and abbreviations}
 \begin{tabular}{|p{4cm}|p{12cm}|}
 	\hline
@@ -67,14 +67,14 @@ This section contains all the software requirements.
 %Beginning of overall desciption
 \section{Overall description}
 \subsection{Product perspective}
-Our system is a self-contained product. 
-Our system's interface will consist of a window where the user can activate the camera and velocity tracking.
+Our product is a self-contained product. 
+Our product's interface will consist of a window where the user can activate the camera and velocity tracking.
 There will be buttons in the application window to stop and start the camera. 
-There will be a menu bar in the application that will allow the user to specify aspects of the system.
-Our systems application window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons.
+There will be a menu bar in the application that will allow the user to specify aspects of the product.
+Our products application window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons.
 There will be a row of drop down menus at the top.
 We will be using computer vision software in order to identify the type of object and track its location across the frame.
-The system will have only one mode of operation, the on mode, where the system constantly processes the images from the camera and velocity is displayed.
+The product will have only one mode of operation, the on mode, where the product constantly processes the images from the camera and velocity is displayed.
 This mode requires no input from the user except to turn off.
 The camera will not have any automated motion.
 The user will have to manually adjust the camera.
@@ -82,20 +82,20 @@ The camera will have a fixed zoom that the user will not be able to change.
 
 \subsection{Product functions}
 The software will be connected to a camera with a live video feed.
-It will than be able to detect objects that are specified for the users needs.
-The software will than be able to acquire the velocity at which they are traveling.
-This information will be stored into a table for the user to see.
+It will then be able to detect objects that are specified for the users needs.
+The software will than be able to acquire the velocity at which the objects are traveling.
+%This information will be stored into a table for the user to see.
 
 
 \subsection{User characteristics}
 This software is intended to be used by many different users.
 The types of users are broken down into two categories: users who wish to track cars, users who wish to track people.
-These users have different use for the system but the software should work the same way for both users.
+These users have different use for the product but the software should work the same way for both users.
 
-Users who wish to track cars may use the software to detect the velocity of a moving car on the road.
+Users who wish to track cars may use the product to detect the velocity of a moving car on the road.
 This means the user will set the stationary camera and point it in the direction of moving vehicles to obtain the velocity.
 
-Users who wish to track the velocity of people may also use the software.
+Users who wish to track the velocity of people may also use the product.
 These users will follow the same procedure as the other users but instead, the software will detect the velocity of people.
 
 \subsection{Constraints}
@@ -112,11 +112,11 @@ The tracking of an identified object's velocity should be within 90\% of the obj
 The velocity tracking should also be reliably given every 0.5 seconds, without any notable dips in rate of recording and processing.
 
 While the video recorded is protected by federal laws, the information nonetheless must meet certain security standards.
-If the video data is to be saved locally, it should also respect encryption of the system it is saved on.
+If the video data is to be saved locally, it should also respect encryption of the product it is saved on.
 Should the video be live streamed to a remote location, it must enter a stable connection to deliver to the intended viewer.
 
 \subsection{Assumptions and dependencies}
-We assume that if our systems camera needs to move that our system would be able to either handle the motion of the camera and still be able to track velocities or be mounted securely enough to minimize motion of the camera, allowing the system to track velocities.
+We assume that if our products camera needs to move that our product would be able to either handle the motion of the camera and still be able to track velocities or be mounted securely enough to minimize motion of the camera, allowing the product to track velocities.
 We assume that the computer vision software will be able to recognize an object within enough time after entering the frame so that there will be enough time for the velocity algorithm to calculate the velocity.
 
 %Beginning of specific requirments
