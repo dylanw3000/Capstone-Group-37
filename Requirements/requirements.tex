@@ -73,6 +73,7 @@ This section contains all the software requirements.
 Our product will be a self-contained product. 
 Our product's interface will consist of a window where the user can activate the camera and velocity tracking.
 There will be a menu bar in the application that will allow the user to specify aspects of the product, as shown by Section C in the picture A below.
+There will be a table on the side of the application, Section D of picture A, that will have a list objects being tracked and their speed.
 Our products application window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons, as depicted in Section B of picture A below.
 The application will have a central section for displaying the video captured by the camera with our information overlay, such as Section A of picture A below.
 We will be using computer vision software in order to identify the type of object and track its location across the frame.
@@ -100,14 +101,26 @@ The software will then be able to acquire the velocity at which the objects are 
 %REWRITE 
 \subsection{User Characteristics}
 %This software is intended to be used by many different users.
-%The types of users are broken down into two categories: users who wish to track cars, users who wish to track people.
-%These users have different use for the product but the software should work the same way for both users.
+% The types of users are broken down into two categories: users who wish to track cars, users who wish to track people.
+% These users have different use for the product but the software should work the same way for both users.
 
-Users who wish to track cars may use the product to detect the velocity of a moving car on the road.
-This means the user will set the stationary camera and point it in the direction of moving vehicles to obtain the velocity.
+% Users who wish to track cars may use the product to detect the velocity of a moving car on the road.
+% This means the user will set the stationary camera and point it in the direction of moving vehicles to obtain the velocity.
 
-Users who wish to track the velocity of people may also use the product.
-These users will follow the same procedure as the other users but instead, the software will detect the velocity of people.
+% Users who wish to track the velocity of people may also use the product.
+% These users will follow the same procedure as the other users but instead, the software will detect the velocity of people.
+
+This software is intended to be used by many different users. 
+Because we have yet to decide on the specific type of object to track, the education level and experience. 
+However, because our product is meant to replace current methods of object velocity tracking, such as the radar gun, our intended users will not need a high education or experience level. 
+In fact it will probably be expected taht minimal training is needed to operate our product.
+
+In order to examine the possible users for our product, we will examine possible object types.
+
+If we decide to use cars as our object type, the main users would be police officers, to be used in enforcing speed limits. 
+In this case the user would have good education level, but likely not high technical expertise.
+
+If we decide to use people as our object type, then the main users will likely be analysists, analysis human movement patterns and speeds in various contexts such as sports or emergency evacuation. In this case, our users will be highly educated, but they too would likely not have high technical expertise.
 
 \subsection{Constraints}
 This product will likely require a nontrivial amount of resources to perform its task at the constant interval we require.
@@ -120,11 +133,12 @@ The product's reliability of use can be described in a number of ways.
 The camera should be recording at a constant and stable rate.
 The objects in the scene should be properly identified with 70\% accuracy.
 The tracking of an identified object's velocity should be within 90\% of the objects actual velocity.
-The velocity tracking should also be reliably given every 0.5 seconds, without any notable dips in rate of recording and processing.
+%The velocity tracking should also be reliably given every 0.5 seconds, without any notable dips in rate of recording and processing.
+The velocity tracking should also be reliably given every 0.5 seconds, with 30 frames per second 90\% of the time.
 
 While the video recorded is protected by federal laws, the information nonetheless must meet certain security standards.
 If the video data is to be saved locally, it should also respect encryption of the product it is saved on.
-Should the video be live streamed to a remote location, it must enter a stable connection to deliver to the intended viewer.
+%Should the video be live streamed to a remote location, it must enter a stable connection to deliver to the intended viewer.
 
 \subsection{Assumptions and Dependencies}
 We assume that if our products camera needs to move that our product would be able to either handle the motion of the camera and still be able to track velocities or be mounted securely enough to minimize motion of the camera, allowing the product to track velocities.
@@ -153,6 +167,13 @@ The velocities returned are within 90\% of the objects' true speeds, as stated a
 %Max effective view distance of 100m
 The product will accurately work within 100m of the camera's placement.
 Objects within 100m of the camera's placement, within its view angle and with an unobstructed line of sight, should all be able to be identified by the camera, reflecting the accuracy requirements described above.
-Objects beyond the maximum effective range can potentially still be identified if the conditions allow, but are not granted the same accuracy guaranty.
+Objects beyond the maximum effective range can potentially still be identified if the conditions allow, but are not granted the same accuracy guarantee.
+%User interface
+Our product's interface will consist of a window where the user can activate the camera and velocity tracking as well as view the camera input live, with squares surrounding each object being tracked and speeds posted below the squares.
+There will be a menu bar in the application that will allow the user to specify aspects of the product, as shown by Section C in the picture A above.
+There will be a table on the side of the application, Section D of picture A, that will have a list objects being tracked and their speed.
+These values will be saved to a comma separated value text document for later analysis.
+Our products application window will consist of a small button row at the bottom for essential buttons, such as the start and stop buttons, as depicted in Section B of picture A above.
+The application will have a central section for displaying the video captured by the camera with our information overlay, such as Section A of picture A above.
 
 \end{document}
