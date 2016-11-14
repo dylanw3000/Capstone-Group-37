@@ -18,18 +18,67 @@
 \maketitle
 
 \begin{abstract}
-Using a stationary camera, with the intent of being mounted on a car, we are attempting to  detect objects and determine the speeds of those objects relative to the Observer (camera).
-This will be done by having the camera recognize objects in space and determine their speeds based on the rate at which they travel through the frame.
-If the camera is on a moving object, then we will need to either have a way for the system to measure it's own speed, likely with an accelerometer or connect to the object, if the object is measuring it's own speed.
-To make this work, we will have to research the varieties of cameras available to use, as well as the API’s  they operate with.
-We will also have to review the available computer vision algorithms and determine which is the most appropriate.
-From this, we will determine the best camera to be used and from there create a object tracking program.
+While we could consider whether we would use a singular camera or multiple, there is really no debate here.
+Stereoscopic cameras carry such an advantage for a project like this, we are making that decision.
  
 \end{abstract}
 
 \end{titlepage}
 
-\section{Problem Definition}
+\section{Live Data Feed}
+
+Both images simultaneously
+Both images plus depth information
+Singular image with depth
+
+\section{Live Compression}
+
+No compression
+Camera live compresses
+Computer live compresses
+
+\section{Long-Term Storage}
+
+1 feed+data, 
+2 feeds no data to be re-calculated, 
+1 feed data baked into video
+
+\section{CV Software Package}
+
+OpenCV
+vlfeat
+vxl
+
+\section{CV Underlying Algorithm}
+
+Harr cascades
+...
+...
+
+\section{Synchronization}
+
+two cameras, each sends images and computer works to compensate for any desyncronization
+two cameras with global shutter, send back 2 images
+2 cameras which do image splicing and send back spliced image to computer
+
+\section{UI Overlay}
+
+Open Broadcastcast Software
+...
+...
+
+\section{Existing Speed Formulas}
+
+make our own
+...
+...
+
+\section{Long-Term Compression}
+
+Lossless
+Lossy
+No Compression
+
 
 %possible sections:  
 
@@ -42,6 +91,6 @@ From this, we will determine the best camera to be used and from there create a 
 %computer vision
 %speed formula
 %legal accountability
-%internal clocks/global shutters
+%internal clocks/global shutters (syncronization)
 
 \end{document}
