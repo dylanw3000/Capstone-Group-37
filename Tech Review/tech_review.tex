@@ -71,9 +71,24 @@ two cameras with global shutter, send back 2 images
 
 \section{UI Overlay} %Dylan
 
-Open Broadcastcast Software
-...
-...
+Open Broadcaster Software
+VideoMeld
+Camtasia
+
+Goals for the selected software are to show the video stream as it is given, as well as placing boses around objects points sent from the backend's recognition software.
+
+Criteria for each of these softwares include performance overhead and the ability to add more overlay components in real time.
+
+\begin{tabular}{ l l }
+  OBS Studio & OBS is a fairly common overlay software.  It has a stable level of performance and is able to pop in elements for the overlay at any time.  It is undetermined as of yet if this software would be able to make these additional elements go to dynamic positions on screen. \\ \hline
+  VideoMeld & This seems to be from before the era of livestreams, and though it has a wide variety for overlay objects, I cannot find any way for it to support dynamically occuring objects in the overlay  \\ \hline
+  Camtasia & This only works live through an extra plugin and it has significant overhead in the process.  Dynamic overlay objects do not seem to be supported. \\
+\end{tabular}
+
+Discussion
+
+I choose OBS based on what is discussed above.
+
 
 \section{Existing Speed Formulas} %Dylan
 
@@ -82,10 +97,26 @@ make our own
 ...
 
 \section{Long-Term Compression} %Alex 
+%Lossless
+%Lossy
+%No Compression
 
-Lossless
-Lossy
-No Compression
+The goals for this piece of the project is to compress the video after it has been displayed to the user, to be kept for long term, should they be needed at a later date.
+With our product, it is likely that the user will be leaving our product running for a significant amount of time, possibly hours.
+When this happens, video files can become rather large.
+This will become a problem for long term storage if our product is used often.
+So, the answer to this problem is to use a compression codec.
+This will reduce the size of the video as much as possible.
+There are several factors to consider when looking at video compression codecs.
+The first is whether or not it is lossless.
+When compressing information, especially pictures and videos, the compression codecs will often save space by removing data, often in the form of merging pixels, leading to a lower resolution.
+While a lossless codec is obviously prefered, there are not many lossless video compression methods available and they often have limited compression.
+Second is the amount of compression, often expressed as a ratio.
+This is the ration of the size of the original video file to the size of the compressed file.
+This ration is typically better with a lossy, as the ability to reduce the quality of the video greatly reduces the size.
+Third is the speed of the compression.
+This is how long it takes for the codec to compress and decompress the video file.
+While this isn't as important as the other 2, the less time that the user is kept waiting the better.
 
 
 %possible sections:  
