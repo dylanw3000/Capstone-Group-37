@@ -101,7 +101,7 @@ make our own
 %Lossy
 %No Compression
 
-The options that we will be looking at are Xvid, FFV1 
+The options that we will be looking at are Xvid, FFV1, OpenH264.
 The goals for this piece of the project is to compress the video after it has been displayed to the user, to be kept for long term, should they be needed at a later date.
 With our product, it is likely that the user will be leaving our product running for a significant amount of time, possibly hours.
 When this happens, video files can become rather large.
@@ -128,6 +128,11 @@ Xvid is a "'lossy' compression but aims at removing just those picture details t
 FFV1 is a lossless video codec that is a part of FFmpeg a "leading multimedia framework, able to decode, encode, transcode, mux, demux, steam, filter and play pretty much anything that humans and machines have created" [3].
 Two sources have reported FFV1's compression ration as roughly 100GB per hour to 45-50GB per hour [4], approximately 2:1, to rougly 1.2:1 to 2.5:1.
 
+H.264 is a video codec that was created by International Telecommunication Union, that has become "an industry standard for video compression" [6].
+Cisco has recently decided to release an open source version under a BSD license and cover the royalties for anyone using their binary files [7].
+While this would allow the our product to use the H.264 codex, it would restrict us in the need to only use their binaries and always keep them up to date.
+Should their be an issue, this could cause significant legal trouble.
+H.264 has a lossless version that has a ration of roughly 2:1 [8].
 
 
 %possible sections:  
