@@ -25,37 +25,96 @@ Stereoscopic cameras carry such an advantage for a project like this, we are mak
 
 \end{titlepage}
 
-\section{Live Data Feed} %Alex
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\section{Technologies}
+
+\subsection{Live Data Feed} %Alex
 
 Both images simultaneously
 Both images plus depth information
 Singular image with depth
 
-\section{Live Compression} %Dylan
+\newpage
+\subsection{Live Compression} %Dylan
 
 No compression
 Camera live compresses
 Computer live compresses
 
-\section{Long-Term Storage}%Alex
+\newpage
+\subsection{Long-Term Storage}%Ben
 
 1 feed+data, 
 2 feeds no data to be re-calculated, 
 1 feed data baked into video
 
-\section{Computer Vision Library} %Ben
+\newpage
+\subsection{Computer Vision Library} %Ben
+The three options for Computer Vision (CV) libraries include OpenCV, LTI-Lib, and VXL.
+Selecting a good CV library is essential for our project.
+The goal of the CV library is to provide us with a large array of functions that we are able to utilize.
+Every CV library we are looking at is open source and is free to use.
+The library selected must be able to support our needs of being able to identify and track objects in real time through our live video feed.
+It must have many available tools to simplify the identification and the tracking of objects.
+The criteria that will be evaluated are languages available, features available, and performance.
+The languages available is important because choosing a language we are already familiar with will give us an advantage.
+We are hoping to use C/C++.
+Feature available is also another very important criteria.
+Specifically, we are looking for features that are able to simplify object tracking and detection.
+Performance also plays a huge large factor in our choice.
+We are looking for library that is as efficient as possible.
+These libraries tend to be written in C/C++.
 
-The three options for Computer Vision software packages include OpenCV, VXL, and AForge.
-Selecting a good Computer Vision library is essential. The goal of the CV library is to provide us with a large array of programming functions that we are able to utilize.
-The library selected must be able to support our needs of being able to identify and track objects in real time.
-The criteria that will be evaluated are languages used, features available, and performance.
 OpenCV is one of the most commonly used libraries for computer vision.
-According to their website, they offer over 2500 algorithms that include identifying objects.
-AForge is also another Computer vision library that is able to detect the motion of objects.
-AForge isn't as commonly used as OpenCV but it is also a great alternative because it also offers motion tracking.
-Based on the criteria needed for computer vision library, OpenCV has a large number of algorithms that we will be able to use as well as performs faster than VXL.
+The OpenCV libraries are written in C/C++.
+According to their website, they offer over 2500 algorithms [1].
+The purpose of OpenCV is to offer a large number of function that the user is able to use to simplify difficult tasks.
+This includes algorithms that are capable to identify and track objects, recognize faces, follow eye movements and many more [1].
+OpenCV is used by many large companies like Google, Yahoo, Microsoft, Intel, IBM, Sony, Honda and Toyota [1]. 
 
-\section{Computer Vision Underlying Algorithm} %Ben
+LTI-Lib is also another Computer vision library that has many algorithms and features.
+LTI-Lib's main goal is to provide an object oriented library in C++ [2].
+It includes libraries for linear algebra, classification and clustering, image processing, as well as visualization and drawing tools [2].
+There are a few research projects that utilize LTI-Lib including one at the University of Liege, Belgium where they do many things like machine learning, medical imaging, radar imaging, as well as sports video analysis.
+
+
+VXL is another great computer vision library utilized by a lot of people.
+Similar to OpenCV, the VXL libraries are written more in C++ [3].
+The main libraries within VXL include numerics (VNL), imaging (VIL), geometry (VGL), and streaming I/O (VSL) [4].
+They also have libraries for image processing, camera geometry, stereo, video manipulation, 3D imaging and many more [4].
+VXL is written to be light, fast, and portable over many platforms [5].
+
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		
+		\hline
+		\textbf{} & \textbf{Languages available} & \textbf{Features available} & \textbf{Performance (rank)} \\
+		\hline
+		OpenCV & C, C++, Java, Python & Many & 1 \\
+		\hline
+		LTI-lib & C, C++ & Many & 2 \\
+		\hline
+		VXL & C, C++ & Numerics, Imaging, geometry, streaming I/O & 3 \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+Based on the criteria needed for computer vision library, OpenCV has a large number of algorithms that we will be able to use as well as performs faster than the other libraries.
+The speed performance test was done by Utkarsh Sinha.
+The comparisons done were 2D DFT, resizing, optical flow, and neural net [6].
+His findings show that OpenCV performs faster than both LTI-Lib and VXL with LTI-Lib coming in second [6].
+Also, Based on reviews, OpenCV is just a lot more popular and widely used.
+This is a huge positive because it means more references and documents will be available for use.
+For our project I think OpenCV would be a lot more useful based on the criteria tested.
+
+\newpage
+\subsection{Computer Vision Underlying Algorithm} %Ben
 
 Haar cascades
 Background subraction
@@ -63,13 +122,15 @@ Background subraction
 ...
 ...
 
-\section{Synchronization} %Alex
+\newpage
+\subsection{Synchronization} %Alex
 
 two cameras, each sends images and computer works to compensate for any desyncronization
 two cameras with global shutter, send back 2 images
 2 cameras which do image splicing and send back spliced image to computer
 
-\section{UI Overlay} %Dylan
+\newpage
+\subsection{UI Overlay} %Dylan
 
 Open Broadcaster Software
 VideoMeld
@@ -89,14 +150,15 @@ Discussion
 
 I choose OBS based on what is discussed above.
 
-
-\section{Existing Speed Formulas} %Dylan
+\newpage
+\subsection{Existing Speed Formulas} %Dylan
 
 make our own
 ...
 ...
 
-\section{Long-Term Compression} %Alex 
+\newpage
+\subsection{Long-Term Compression} %Alex 
 %Lossless
 %Lossy
 %No Compression
@@ -117,6 +179,30 @@ This ration is typically better with a lossy, as the ability to reduce the quali
 Third is the speed of the compression.
 This is how long it takes for the codec to compress and decompress the video file.
 While this isn't as important as the other 2, the less time that the user is kept waiting the better.
+
+\newpage
+\section{Conclusion}
+
+\section{References}
+
+[1]"ABOUT | OpenCV", Opencv.org, 2016. [Online]. Available: http://opencv.org/about.html. [Accessed: 16- Nov- 2016].
+
+[2]"LTI-Lib", Ltilib.sourceforge.net, 2016. [Online]. Available: http://ltilib.sourceforge.net/doc/homepage/index.shtml. [Accessed: 16- Nov- 2016].
+
+[3]"VXL: 1. Introduction", Public.kitware.com, 2016. [Online]. Available: http://public.kitware.com/vxl/doc/release/books/core/book_1.html. [Accessed: 16- Nov- 2016].
+
+[4]"VXL - C++ Libraries for Computer Vision", Vxl.sourceforge.net, 2016. [Online]. Available: http://vxl.sourceforge.net/. [Accessed: 16- Nov- 2016].
+
+[5]"Computer Recognition System For Detecting And Tracking Objects In 3D Environment", Csus-dspace.calstate.edu, 2016. [Online]. Available: http://csus-dspace.calstate.edu/bitstream/handle/10211.9/1249/Introduction%20to%20computer%20vision.pdf?sequence=2. [Accessed: 16- Nov- 2016].
+
+[6]U. Sinha, "OpenCV vs VXL vs LTI: Performance Test - AI Shack - Tutorials for OpenCV, computer vision, deep learning, image processing, neural networks and artificial intelligence.", Aishack.in, 2016. [Online]. Available: http://aishack.in/tutorials/opencv-vs-vxl-vs-lti-performance-test/. [Accessed: 16- Nov- 2016].
+
+%http://opencv.org/about.html [1]
+%http://ltilib.sourceforge.net/doc/homepage/index.shtml [2]
+%http://public.kitware.com/vxl/doc/release/books/core/book_1.html [3]
+%http://vxl.sourceforge.net/ [4]
+%http://csus-dspace.calstate.edu/bitstream/handle/10211.9/1249/Introduction%20to%20computer%20vision.pdf?sequence=2 [5]
+%http://aishack.in/tutorials/opencv-vs-vxl-vs-lti-performance-test/[6]
 
 
 %possible sections:  
