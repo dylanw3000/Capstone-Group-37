@@ -29,6 +29,7 @@ Stereoscopic cameras carry such an advantage for a project like this, we are mak
 \newpage
 
 \section{Introduction}
+This document is a detailed review of multiple technology options considered for our project. Each piece of technology has three options that is being compared. It includes reviews of live data feed, synchronization, and long-term compression written by Alex Bailey. Also reviewed, are options for long-term storage, computer vision libraries, and object tracking algorithms written by Ben Wick. Finally, written by Dylan Washburne, includes live compression, UI overlay, and video to velocity formulas.
 
 \section{Technologies}
 
@@ -39,18 +40,96 @@ Both images plus depth information
 Singular image with depth
 
 \newpage
-\subsection{Live Compression} %Dylan
+\subsection{Synchronization} %Alex
 
-No compression
-Camera live compresses
-Computer live compresses
+two cameras, each sends images and computer works to compensate for any desyncronization
+two cameras with global shutter, send back 2 images
+2 cameras which do image splicing and send back spliced image to computer
+
 
 \newpage
-\subsection{Long-Term Storage}%Ben
+\subsection{Long-Term Compression} %Alex 
+%Lossless
+%Lossy
+%No Compression
 
+The options that we will be looking at are Xvid, FFV1, OpenH264.
+The goals for this piece of the project is to compress the video after it has been displayed to the user, to be kept for long term, should they be needed at a later date.
+With our product, it is likely that the user will be leaving our product running for a significant amount of time, possibly hours.
+When this happens, video files can become rather large.
+This will become a problem for long term storage if our product is used often.
+So, the answer to this problem is to use a compression encoder/decoder, codec.
+This will reduce the size of the video as much as possible.
+There are several factors to consider when looking at video compression codecs.
+The first is whether or not it is lossless.
+When compressing information, especially pictures and videos, the compression codecs will often save space by removing data, often in the form of merging pixels, leading to a lower resolution, these are called lossy codecs.
+While a lossless codec is obviously prefered, there are not many lossless video compression methods available and they often have limited compression.
+Lossy codecs generally offer a greater reduction of file size, with the amount of data lost, depending on the codec.
+This could be an acceptable tradeoff, depending on the size of the file and amount of quality lost.
+Second is the amount of compression, often expressed as a ratio.
+This is the ratio of the size of the original video file to the size of the compressed file.
+This can be difficult to judge as some videos compress better than other depending on the what is being recorded.
+Third, price is almost always a factor, as it is in this case.
+If there is an open source alternative that is comparable to a paid version, then the open source would be more favorable.
+
+Xvid is a an open source codec alternatice to a commercially sold codec, DivX \footnote{B. Clark, 'All You Need to Know about Video Codecs, Containers, and Compression', 2015. [Online]. Available: http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/ . [Accessed: 15-Nov-2016] }. %[2]
+Xvid claims to be able to "compress video at a ratio of 200:1 or more" \footnote{xvid.com, 'Home', 2016. [Online]. Available: https://www.xvid.com/ . [Accessed: 15-Nov-2016] }. %[1].
+While impressive, this is likely only under certain conditions.
+Xvid is a "'lossy' compression but aims at removing just those picture details that are not important for human perception" \textsuperscript{2}. %[1].
+
+FFV1 is a lossless video codec that is a part of FFmpeg a "leading multimedia framework, able to decode, encode, transcode, mux, demux, steam, filter and play pretty much anything that humans and machines have created"\footnote{ffmpeg.org, 'About FFmpeg'. [Online]. Available: http://ffmpeg.org/about.html . [Accessed: 15-Nov-2016] }. %[3].
+Two sources have reported FFV1's compression ratio as roughly 100GB per hour to 45-50GB per hour \footnote{E. Lorrain, 'A Short Guide to Choosing a Digital Format for Video Archiving Masters', 2014. [Online]. Available: https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters . [Accessed: 15-Nov-2016] }, approximately 2:1, to rougly 1.2:1 to 2.5:1\footnote{CS MSU Graphics \& Media Lab, \textit{Lossless Video Codecs Comparison}, Moscow: CS MSU Graphics \& Media Lab, 2004, p.14[Online]. Available: http://compression.ru/video/codec\_comparison/pdf/lossless\_codecs\_test\_en.pdf . [Accessed: 15-Nov-2016] }. % [4], [5]
+
+H.264 is a video codec that was created by International Telecommunication Union\footnote{Vcodex, 'H.264 Advanced Video Coding'. [Online]. Available: https://www.vcodex.com/h264-resources/ . [Accessed: 15-Nov-2016] }, that has become "an industry standard for video compression"\textsuperscript{12}. % [6].
+Cisco has recently decided to release an open source version under a BSD license and cover the royalties for anyone using their binary files\footnote{openh264.org, 'FAQ'. [Online]. Available: http://www.openh264.org/faq.html . [Accessed: 15-Nov-2016] }. % [7].
+While this would allow the our product to use the H.264 codex, it would restrict us in the need to only use their binaries and always keep them up to date.
+Should their be an issue, this could cause significant legal trouble.
+H.264 has a lossless version that has a ratio of roughly 2:1\footnote{H. Lewetz, et al., 'Comparing Video Codecs and Containers for Archives', 2013. [Online]. Available: http://download.das-werkstatt.com/pb/mthk/info/video/comparison\_video\_codecs\_containers.html\#codec\_tests . [Accessed: 15-Nov-2016] }. %[8].
+
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	\textbf{Codec} & \textbf{Lossless} & \textbf{Compression Ratio} & \textbf{Open Source} \\
+	\hline
+	Xvid & No & 200:1(theoretical) & Yes \\
+	\hline
+	FFV1 & Yes & 2:1 (roughly) & Yes \\
+	\hline
+	OpenH264 & Yes & 2:1 (roughly) & Yes (with caveat) \\
+	\hline
+	
+\end{tabular}
+
+
+Selection
+
+While Xvid has the best compression ratio, since it is not lossless, it is not the best choice.
+OpenH264 has the roughly the same abilities as FFV1, but because of the potential legal problems and potential royalty payments this is also not the best choice.
+This means that FFV1 is the best option for the long term compression codec.
+
+\newpage
+\subsection{Long-Term Storage} %Ben
+
+The three option we have considered for video storage is .
+The 
 1 feed+data, 
 2 feeds no data to be re-calculated, 
 1 feed data baked into video
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		
+		\hline
+		\textbf{} & \textbf{Languages available} & \textbf{Features available} & \textbf{Performance (rank)} \\
+		\hline
+		OpenCV & C, C++, Java, Python & Many & 1 \\
+		\hline
+		LTI-lib & C, C++ & Many & 2 \\
+		\hline
+		VXL & C, C++ & Numerics, Imaging, geometry, streaming I/O & 3 \\
+		\hline
+		
+	\end{tabular}
+\end{center}
 
 \newpage
 \subsection{Computer Vision Library} %Ben
@@ -123,12 +202,11 @@ Background subraction
 ...
 
 \newpage
-\subsection{Synchronization} %Alex
+\subsection{Live Compression} %Dylan
 
-two cameras, each sends images and computer works to compensate for any desyncronization
-two cameras with global shutter, send back 2 images
-2 cameras which do image splicing and send back spliced image to computer
-
+No compression
+Camera live compresses
+Computer live compresses
 
 \newpage
 \subsection{UI Overlay} %Dylan %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -180,67 +258,6 @@ Phase Correlation is used to determine how far an object has moved on screen by 
 
 Phase Correlation is clearly not an option we will wish to persue for this project, based on the conditions listed above.  The SDSP had the lowest overhead of any method available, however Adaptive Rood was notably faster in many scenarios.  It is worth noting Adaptive Rood has parts based around Diamond Search patterns which would make it more advanced than the pattern by itself, however it is questionable wether the objects in frame would move fast enough that we would need to predict their motion.  That said, I am selecting the Adaptive Rood method for this project.
 
-% \newpage
-
-\newpage
-\subsection{Long-Term Compression} %Alex 
-%Lossless
-%Lossy
-%No Compression
-
-The options that we will be looking at are Xvid, FFV1, OpenH264.
-The goals for this piece of the project is to compress the video after it has been displayed to the user, to be kept for long term, should they be needed at a later date.
-With our product, it is likely that the user will be leaving our product running for a significant amount of time, possibly hours.
-When this happens, video files can become rather large.
-This will become a problem for long term storage if our product is used often.
-So, the answer to this problem is to use a compression encoder/decoder, codec.
-This will reduce the size of the video as much as possible.
-There are several factors to consider when looking at video compression codecs.
-The first is whether or not it is lossless.
-When compressing information, especially pictures and videos, the compression codecs will often save space by removing data, often in the form of merging pixels, leading to a lower resolution, these are called lossy codecs.
-While a lossless codec is obviously prefered, there are not many lossless video compression methods available and they often have limited compression.
-Lossy codecs generally offer a greater reduction of file size, with the amount of data lost, depending on the codec.
-This could be an acceptable tradeoff, depending on the size of the file and amount of quality lost.
-Second is the amount of compression, often expressed as a ratio.
-This is the ratio of the size of the original video file to the size of the compressed file.
-This can be difficult to judge as some videos compress better than other depending on the what is being recorded.
-Third, price is almost always a factor, as it is in this case.
-If there is an open source alternative that is comparable to a paid version, then the open source would be more favorable.
-
-Xvid is a an open source codec alternatice to a commercially sold codec, DivX \footnote{B. Clark, 'All You Need to Know about Video Codecs, Containers, and Compression', 2015. [Online]. Available: http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/ . [Accessed: 15-Nov-2016] }. %[2]
-Xvid claims to be able to "compress video at a ratio of 200:1 or more" \footnote{xvid.com, 'Home', 2016. [Online]. Available: https://www.xvid.com/ . [Accessed: 15-Nov-2016] }. %[1].
-While impressive, this is likely only under certain conditions.
-Xvid is a "'lossy' compression but aims at removing just those picture details that are not important for human perception" \textsuperscript{2}. %[1].
-
-FFV1 is a lossless video codec that is a part of FFmpeg a "leading multimedia framework, able to decode, encode, transcode, mux, demux, steam, filter and play pretty much anything that humans and machines have created"\footnote{ffmpeg.org, 'About FFmpeg'. [Online]. Available: http://ffmpeg.org/about.html . [Accessed: 15-Nov-2016] }. %[3].
-Two sources have reported FFV1's compression ratio as roughly 100GB per hour to 45-50GB per hour \footnote{E. Lorrain, 'A Short Guide to Choosing a Digital Format for Video Archiving Masters', 2014. [Online]. Available: https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters . [Accessed: 15-Nov-2016] }, approximately 2:1, to rougly 1.2:1 to 2.5:1\footnote{CS MSU Graphics \& Media Lab, \textit{Lossless Video Codecs Comparison}, Moscow: CS MSU Graphics \& Media Lab, 2004, p.14[Online]. Available: http://compression.ru/video/codec\_comparison/pdf/lossless\_codecs\_test\_en.pdf . [Accessed: 15-Nov-2016] }. % [4], [5]
-
-H.264 is a video codec that was created by International Telecommunication Union\footnote{Vcodex, 'H.264 Advanced Video Coding'. [Online]. Available: https://www.vcodex.com/h264-resources/ . [Accessed: 15-Nov-2016] }, that has become "an industry standard for video compression"\textsuperscript{12}. % [6].
-Cisco has recently decided to release an open source version under a BSD license and cover the royalties for anyone using their binary files\footnote{openh264.org, 'FAQ'. [Online]. Available: http://www.openh264.org/faq.html . [Accessed: 15-Nov-2016] }. % [7].
-While this would allow the our product to use the H.264 codex, it would restrict us in the need to only use their binaries and always keep them up to date.
-Should their be an issue, this could cause significant legal trouble.
-H.264 has a lossless version that has a ratio of roughly 2:1\footnote{H. Lewetz, et al., 'Comparing Video Codecs and Containers for Archives', 2013. [Online]. Available: http://download.das-werkstatt.com/pb/mthk/info/video/comparison\_video\_codecs\_containers.html\#codec\_tests . [Accessed: 15-Nov-2016] }. %[8].
-
-\begin{tabular}{|c|c|c|c|}
-	\hline
-	\textbf{Codec} & \textbf{Lossless} & \textbf{Compression Ratio} & \textbf{Open Source} \\
-	\hline
-	Xvid & No & 200:1(theoretical) & Yes \\
-	\hline
-	FFV1 & Yes & 2:1 (roughly) & Yes \\
-	\hline
-	 OpenH264 & Yes & 2:1 (roughly) & Yes (with caveat) \\
-	\hline
-	
-\end{tabular}
-
-
-Selection
-
-While Xvid has the best compression ratio, since it is not lossless, it is not the best choice.
-OpenH264 has the roughly the same abilities as FFV1, but because of the potential legal problems and potential royalty payments this is also not the best choice.
-This means that FFV1 is the best option for the long term compression codec.
-
 \newpage
 \section{Conclusion}
 
@@ -250,7 +267,7 @@ This means that FFV1 is the best option for the long term compression codec.
 
 [2]"LTI-Lib", Ltilib.sourceforge.net, 2016. [Online]. Available: http://ltilib.sourceforge.net/doc/homepage/index.shtml. [Accessed: 16- Nov- 2016].
 
-[3]"VXL: 1. Introduction", Public.kitware.com, 2016. [Online]. Available: http://public.kitware.com/vxl/doc/release/books/core/book_1.html. [Accessed: 16- Nov- 2016].
+[3]"VXL: 1. Introduction", Public.kitware.com, 2016. [Online]. Available: http://public.kitware.com/vxl/doc/release/books/core/book\_1.html. [Accessed: 16- Nov- 2016].
 
 [4]"VXL - C++ Libraries for Computer Vision", Vxl.sourceforge.net, 2016. [Online]. Available: http://vxl.sourceforge.net/. [Accessed: 16- Nov- 2016].
 
