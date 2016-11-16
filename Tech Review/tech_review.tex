@@ -138,7 +138,7 @@ Due to us needing the easiest solution to implement, the stereoscopic camera is 
 
 
 \newpage
-\subsection{Long-Term Compression} %Alex 
+\subsection{Long-Term Compression} %Alex %long#
 %Lossless
 %Lossy
 %No Compression
@@ -162,19 +162,30 @@ This can be difficult to judge as some videos compress better than other dependi
 Third, price is almost always a factor, as it is in this case.
 If there is an open source alternative that is comparable to a paid version, then the open source would be more favorable.
 
-Xvid is a an open source codec alternative to a commercially sold codec, DivX \footnote{B. Clark, 'All You Need to Know about Video Codecs, Containers, and Compression', 2015. [Online]. Available: http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/ . [Accessed: 15-Nov-2016] }. %[2]
-Xvid claims to be able to "compress video at a ratio of 200:1 or more" \footnote{xvid.com, 'Home', 2016. [Online]. Available: https://www.xvid.com/ . [Accessed: 15-Nov-2016] }. %[1].
+Xvid is a an open source codec alternative to a commercially sold codec, DivX [1].
+%\footnote{B. Clark, 'All You Need to Know about Video Codecs, Containers, and Compression', 2015. [Online]. Available: http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/ . [Accessed: 15-Nov-2016] }. %[2]
+Xvid claims to be able to "compress video at a ratio of 200:1 or more" [long2]. 
+%\footnote{xvid.com, 'Home', 2016. [Online]. Available: https://www.xvid.com/ . [Accessed: 15-Nov-2016] }. %[1].
 While impressive, this is likely only under certain conditions.
-Xvid is a "'lossy' compression but aims at removing just those picture details that are not important for human perception" \textsuperscript{2}. %[1].
+Xvid is a "'lossy' compression but aims at removing just those picture details that are not important for human perception" [2].
+%\textsuperscript{2}. %[1].
 
-FFV1 is a lossless video codec that is a part of FFmpeg a "leading multimedia framework, able to decode, encode, transcode, mux, demux, steam, filter and play pretty much anything that humans and machines have created"\footnote{ffmpeg.org, 'About FFmpeg'. [Online]. Available: http://ffmpeg.org/about.html . [Accessed: 15-Nov-2016] }. %[3].
-Two sources have reported FFV1's compression ratio as roughly 100GB per hour to 45-50GB per hour \footnote{E. Lorrain, 'A Short Guide to Choosing a Digital Format for Video Archiving Masters', 2014. [Online]. Available: https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters . [Accessed: 15-Nov-2016] }, approximately 2:1, to roughly 1.2:1 to 2.5:1\footnote{CS MSU Graphics \& Media Lab, \textit{Lossless Video Codecs Comparison}, Moscow: CS MSU Graphics \& Media Lab, 2004, p.14[Online]. Available: http://compression.ru/video/codec\_comparison/pdf/lossless\_codecs\_test\_en.pdf . [Accessed: 15-Nov-2016] }. % [4], [5]
+FFV1 is a lossless video codec that is a part of FFmpeg a "leading multimedia framework, able to decode, encode, transcode, mux, demux, steam, filter and play pretty much anything that humans and machines have created" [3].
+%\footnote{ffmpeg.org, 'About FFmpeg'. [Online]. Available: http://ffmpeg.org/about.html . [Accessed: 15-Nov-2016] }. %[3].
+Two sources have reported FFV1's compression ratio as roughly 100GB per hour to 45-50GB per hour [4],
+%\footnote{E. Lorrain, 'A Short Guide to Choosing a Digital Format for Video Archiving Masters', 2014. [Online]. Available: https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters . [Accessed: 15-Nov-2016] },
+approximately 2:1, to roughly 1.2:1 to 2.5:1 [5].
+%\footnote{CS MSU Graphics \& Media Lab, \textit{Lossless Video Codecs Comparison}, Moscow: CS MSU Graphics \& Media Lab, 2004, p.14[Online]. Available: http://compression.ru/video/codec\_comparison/pdf/lossless\_codecs\_test\_en.pdf . [Accessed: 15-Nov-2016] }. % [4], [5]
 
-H.264 is a video codec that was created by International Telecommunication Union\footnote{Vcodex, 'H.264 Advanced Video Coding'. [Online]. Available: https://www.vcodex.com/h264-resources/ . [Accessed: 15-Nov-2016] }, that has become "an industry standard for video compression"\textsuperscript{6}. % [6].
-Cisco has recently decided to release an open source version under a BSD license and cover the royalties for anyone using their binary files\footnote{openh264.org, 'FAQ'. [Online]. Available: http://www.openh264.org/faq.html . [Accessed: 15-Nov-2016] }. % [7].
+H.264 is a video codec that was created by International Telecommunication Union [6],
+%\footnote{Vcodex, 'H.264 Advanced Video Coding'. [Online]. Available: https://www.vcodex.com/h264-resources/ . [Accessed: 15-Nov-2016] }
+that has become "an industry standard for video compression" [6]. %\textsuperscript{6}. % [6].
+Cisco has recently decided to release an open source version under a BSD license and cover the royalties for anyone using their binary files [7].
+%\footnote{openh264.org, 'FAQ'. [Online]. Available: http://www.openh264.org/faq.html . [Accessed: 15-Nov-2016] }. % [7].
 While this would allow our product to use the H.264 codex, it would restrict us in the need to only use their binaries and always keep them up to date.
 Should there be an issue, this could cause significant legal trouble.
-H.264 has a lossless version that has a ratio of roughly 2:1\footnote{H. Lewetz, et al., 'Comparing Video Codecs and Containers for Archives', 2013. [Online]. Available: http://download.das-werkstatt.com/pb/mthk/info/video/comparison\_video\_codecs\_containers.html\#codec\_tests . [Accessed: 15-Nov-2016] }. %[8].
+H.264 has a lossless version that has a ratio of roughly 2:1 [8].
+%\footnote{H. Lewetz, et al., 'Comparing Video Codecs and Containers for Archives', 2013. [Online]. Available: http://download.das-werkstatt.com/pb/mthk/info/video/comparison\_video\_codecs\_containers.html\#codec\_tests . [Accessed: 15-Nov-2016] }. %[8].
 
 \begin{center}
 	\begin{tabular}{|c|c|c|c|}
@@ -211,20 +222,20 @@ AVI is an older container created by Microsoft. It features support almost any v
 Because it is an older container, it does lack a few features.
 The only supported devices are Microsoft devices.
 This means it won't be able to play on any apple device.
-AVI also tends to be larger than most video formats because of the lack of video compression features [11].
+AVI also tends to be larger than most video formats because of the lack of video compression features [28].
 
 MP4 is another container that is developed by the Motion Pictures Expert Group.
-The videos inside MP4 files are encoded with H.264 [12].
-MP4 is compressed using AAC encoding or lossy which allows for great storage [12].
-MP4 is compatible with devices like IPad, IPod, Android Phone and many others which gives it an edge on MKV and AVI [12].
+The videos inside MP4 files are encoded with H.264 [29].
+MP4 is compressed using AAC encoding or lossy which allows for great storage [29].
+MP4 is compatible with devices like IPad, IPod, Android Phone and many others which gives it an edge on MKV and AVI [29].
 This reason alone makes it usually one of the most used containers.
 MP4 is also capable of handling high quality videos.
 However MKV tends to win in that category.
 
-MKV is another container that is used that can hold an unlimited number of video, audio, picture or subtitle tracks  that is developed by CorCode, Inc [13].
-MKV does a great job of handling high quality video [13].
+MKV is another container that is used that can hold an unlimited number of video, audio, picture or subtitle tracks  that is developed by CorCode, Inc [long3].
+MKV does a great job of handling high quality video [30].
 It is very flexible a
-It can't be played on portable devices including phones and tablets [13].
+It can't be played on portable devices including phones and tablets [30].
 However, MKV does support H.264/AVC which creates for efficient HD content playback.
 
 \begin{center}
@@ -271,22 +282,22 @@ These libraries tend to be written in C/C++.
 
 OpenCV is one of the most commonly used libraries for computer vision.
 The OpenCV libraries are written in C/C++.
-According to their website, they offer over 2500 algorithms [1].
+According to their website, they offer over 2500 algorithms [18].
 The purpose of OpenCV is to offer a large number of function that the user is able to use to simplify difficult tasks.
-This includes algorithms that are capable to identify and track objects, recognize faces, follow eye movements and many more [1].
-OpenCV is used by many large companies like Google, Yahoo, Microsoft, Intel, IBM, Sony, Honda and Toyota [1]. 
+This includes algorithms that are capable to identify and track objects, recognize faces, follow eye movements and many more [18].
+OpenCV is used by many large companies like Google, Yahoo, Microsoft, Intel, IBM, Sony, Honda and Toyota [18]. 
 
 LTI-Lib is also another Computer vision library that has many algorithms and features.
-LTI-Lib's main goal is to provide an object oriented library in C++ [2].
-It includes libraries for linear algebra, classification and clustering, image processing, as well as visualization and drawing tools [2].
+LTI-Lib's main goal is to provide an object oriented library in C++ [19].
+It includes libraries for linear algebra, classification and clustering, image processing, as well as visualization and drawing tools [19].
 There are a few research projects that utilize LTI-Lib including one at the University of Liege, Belgium where they do many things like machine learning, medical imaging, radar imaging, as well as sports video analysis.
 
 
 VXL is another great computer vision library utilized by a lot of people.
-Similar to OpenCV, the VXL libraries are written more in C++ [3].
-The main libraries within VXL include numerics (VNL), imaging (VIL), geometry (VGL), and streaming I/O (VSL) [4].
-They also have libraries for image processing, camera geometry, stereo, video manipulation, 3D imaging and many more [4].
-VXL is written to be light, fast, and portable over many platforms [5].
+Similar to OpenCV, the VXL libraries are written more in C++ [20].
+The main libraries within VXL include numerics (VNL), imaging (VIL), geometry (VGL), and streaming I/O (VSL) [21].
+They also have libraries for image processing, camera geometry, stereo, video manipulation, 3D imaging and many more [21].
+VXL is written to be light, fast, and portable over many platforms [vision5].
 
 
 \begin{center}
@@ -307,8 +318,8 @@ VXL is written to be light, fast, and portable over many platforms [5].
 
 Based on the criteria needed for computer vision library, OpenCV has a large number of algorithms that we will be able to use as well as performs faster than the other libraries.
 The speed performance test was done by Utkarsh Sinha.
-The comparisons done were 2D DFT, resizing, optical flow, and neural net [6].
-His findings show that OpenCV performs faster than both LTI-Lib and VXL with LTI-Lib coming in second [6].
+The comparisons done were 2D DFT, resizing, optical flow, and neural net [22].
+His findings show that OpenCV performs faster than both LTI-Lib and VXL with LTI-Lib coming in second [22].
 Also, Based on reviews, OpenCV is just a lot more popular and widely used.
 This is a huge positive because it means more references and documents will be available for use.
 For our project I think OpenCV would be a lot more useful based on the criteria tested.
@@ -326,18 +337,18 @@ The speed of the method is also very important because the method used should be
 
 
 Haar Cascades is a great object detection method.
-It is capable of facial recognition, vehicle tracking, animal tracking, and many other objects [7].
-Haar cascades is most accurate with facial recognition with a precision rate of 80 percent [7].
-However, vehicle tracking precision is sub optimal with a precision rate of just below 50 percent [7].
-The accuracy of cars does go up when viewing cars from the side [7].
+It is capable of facial recognition, vehicle tracking, animal tracking, and many other objects [24].
+Haar cascades is most accurate with facial recognition with a precision rate of 80 percent [24].
+However, vehicle tracking precision is sub optimal with a precision rate of just below 50 percent [24].
+The accuracy of cars does go up when viewing cars from the side [24].
 
 Background subtraction is also another common method for object detection.
 According to documentation on OpenCV's website, "Background subtraction calculates the foreground mask performing a subtraction between the current frame and a background model."
 This means it is able to detect the background and then use that to detect the moving object.
-This is done in two steps, background initialization, and background update [8].
-This method is easy to apply when an image of the background alone is available [9].
+This is done in two steps, background initialization, and background update [25].
+This method is easy to apply when an image of the background alone is available [26].
 Because the method relies on moving objects, objects that are moving more slowly have a higher chance of error.
-Shadows can also cause error because shadows move as well but can be marked as foreground [9].
+Shadows can also cause error because shadows move as well but can be marked as foreground [26].
 
 Speeded Up Robust Features or SURF is another method capable of facial recognition and car detection.
 SURF relies on an image to determine key points.
@@ -362,7 +373,7 @@ This means it will rely on a selection of images to create key points and then c
 
 This option is a little more difficult to choose from.
 All options are viable and have positives as well as negatives.
-The accuracy testing was done in a research paper testing for the speed and accuracy of Haar cascades and SURF [10].
+The accuracy testing was done in a research paper testing for the speed and accuracy of Haar cascades and SURF [27].
 The deciding factor is whether accuracy is more important than the speed of the detection.
 As long as the method is capable of detecting fast moving objects with a low rate of error, then accuracy should be the main deciding factor.
 Because Haar cascades is more accurate for facial detection, and SURF being less efficient, our best bet is to explore the background subtraction method.
@@ -372,11 +383,14 @@ Because Haar cascades is more accurate for facial detection, and SURF being less
 
 When the program is running, the camera will be actively generating data.  Videos by their basic nature require large amounts of data to be transferred.  A method to reduce the load of the video passing through is to compress it at some step of the way.  However, compression carries with it potential dips in video quality which may be required to accurately identify objects.
 
-The most basic approach to the problem is not to compress the video at all.  This ensures the entire image is received by the computer which is doing the processing.  This however is not an ideal solution, because while it is receiving the maximum quality image, it could also has to transmit the entire image to the display port, which often is smaller than the resolution the video was taken at.  This also means that while it has the highest visual fidelity, it has to parse that much more imagery before it can spit out a response\footnote{compression.ru. [Online]. Available: http://compression.ru/video/codec\_comparison/pdf/msu\_lossless\_codecs\_comparison\_2007\_eng.pdf . [Accessed: 15-Nov-2016] }. 
+The most basic approach to the problem is not to compress the video at all.  This ensures the entire image is received by the computer which is doing the processing.  This however is not an ideal solution, because while it is receiving the maximum quality image, it could also has to transmit the entire image to the display port, which often is smaller than the resolution the video was taken at.  This also means that while it has the highest visual fidelity, it has to parse that much more imagery before it can spit out a response [15].
+%\footnote{compression.ru. [Online]. Available: http://compression.ru/video/codec\_comparison/pdf/msu\_lossless\_codecs\_comparison\_2007\_eng.pdf . [Accessed: 15-Nov-2016] }. 
 
-A second method to consider is that the computer does video compression in addition to its other duties, every frame.  This offers the option to output significantly less imagery to the display port each frame, at no loss to incoming video.  Alternatively, the computer can also compress the image before it begins its scans to lessen the amount of work required to scan the entire image.  It is fully possible that the image will not degrade in a significant enough manner under compression that it would affect the object recognition\footnote{microsoft.com. [Online]. Available: https://msdn.microsoft.com/en-us/library/windows/desktop/dd743961(v=vs.85).aspx . [Accessed: 15-Nov-2016] }. 
+A second method to consider is that the computer does video compression in addition to its other duties, every frame.  This offers the option to output significantly less imagery to the display port each frame, at no loss to incoming video.  Alternatively, the computer can also compress the image before it begins its scans to lessen the amount of work required to scan the entire image.  It is fully possible that the image will not degrade in a significant enough manner under compression that it would affect the object recognition [16].
+%\footnote{microsoft.com. [Online]. Available: https://msdn.microsoft.com/en-us/library/windows/desktop/dd743961(v=vs.85).aspx . [Accessed: 15-Nov-2016] }. 
 
-If the image getting compressed would not affect the object recognition, then it would be beneficial to offload as much processing the computer would perform as possible.  To this end, it is possible that modern video cameras can compress the frames before sending the images back to the computer.  Doing so would offload a decent amount of stress from the computer when processing the image, as well as when receiving the data from the camera in the first place\footnote{vcodex.com. [Online]. Available: https://www.vcodex.com/news/how-to-stream-better-quality-video-part-1-basics-and-good-practices/ . [Accessed: 15-Nov-2016] }. \\
+If the image getting compressed would not affect the object recognition, then it would be beneficial to offload as much processing the computer would perform as possible.  To this end, it is possible that modern video cameras can compress the frames before sending the images back to the computer.  Doing so would offload a decent amount of stress from the computer when processing the image, as well as when receiving the data from the camera in the first place [17].
+%\footnote{vcodex.com. [Online]. Available: https://www.vcodex.com/news/how-to-stream-better-quality-video-part-1-basics-and-good-practices/ . [Accessed: 15-Nov-2016] }. \\
 
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -397,11 +411,14 @@ No compression, while the ideal of receiving perfect image quality is certainly 
 
 The UI overlay we select can be generated by one of the three following software packages:  OBS, Camtasia, or XSplit.  The goals for this software is to run with minimal overhead because it must perform its function while the backend is also doing the heavy lifting.  A major function we require from the selected software package is the ability to create an overlay on top of the incoming video feed.  In addition, depending on how the backend is set up, we will also need the overlay to place boxes around positions specified by the backend.  This is an effort to show the user where identified objects are in the image feed.
 
-Open Broadcaster Software, frequently referred to as OBS, is an open source project designed for use in video editing and streaming.  OBS is also currently the most used software for live-streaming video feeds over the internet.  It is made to be as lightweight as possible while providing all required power to the user for the purposes of editing the video feed\footnote{obsproject.com. [Online]. Available: https://obsproject.com/ . [Accessed: 15-Nov-2016] }.
+Open Broadcaster Software, frequently referred to as OBS, is an open source project designed for use in video editing and streaming.  OBS is also currently the most used software for live-streaming video feeds over the internet.  It is made to be as lightweight as possible while providing all required power to the user for the purposes of editing the video feed [12].
+%\footnote{obsproject.com. [Online]. Available: https://obsproject.com/ . [Accessed: 15-Nov-2016] }.
 
-Camtasia is, at its core, a video editing software.  Since the rise in popularity of live streaming, Camtasia's creators (TechSmith) have added the capability to support live video streams.  They have an extensive toolset to allow you to manipulate what is shown on-screen due to their roots in video editing, but that also comes at the cost of marginally more overhead when running compared to other modern solutions\footnote{techsmith.com. [Online]. Available: https://www.techsmith.com/camtasia.html . [Accessed: 15-Nov-2016] }.
+Camtasia is, at its core, a video editing software.  Since the rise in popularity of live streaming, Camtasia's creators (TechSmith) have added the capability to support live video streams.  They have an extensive toolset to allow you to manipulate what is shown on-screen due to their roots in video editing, but that also comes at the cost of marginally more overhead when running compared to other modern solutions [13].
+%\footnote{techsmith.com. [Online]. Available: https://www.techsmith.com/camtasia.html . [Accessed: 15-Nov-2016] }.
 
-XSplit is a software designed primarily  for use in web streaming a video.  As a result, it is designed to be run in the background while more strenuous tasks simultaneously run on the computer.  Popular add-on packages allow it to generate pop-in elements on the overlay, primarily  for Twitch donation notifications, but it can potentially be retooled for dynamic placement\footnote{xsplit.com. [Online]. Available: https://www.xsplit.com/ . [Accessed: 15-Nov-2016] }. \\
+XSplit is a software designed primarily  for use in web streaming a video.  As a result, it is designed to be run in the background while more strenuous tasks simultaneously run on the computer.  Popular add-on packages allow it to generate pop-in elements on the overlay, primarily  for Twitch donation notifications, but it can potentially be retooled for dynamic placement [14].
+%\footnote{xsplit.com. [Online]. Available: https://www.xsplit.com/ . [Accessed: 15-Nov-2016] }. \\
 
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -422,11 +439,14 @@ Based on the capabilities of review technologies, OBS Studio is the selection fo
 
 In a sense video to velocity formulas already exist, however they exist to view their targets from a known, fixed distance and take advantage of hard-coded values.  In that way, we can certainly make use of what has been made, but we will have to heavily modify it for our purposes.  We can do so by using one variety of block-matching algorithm.  Our options include SDSP, Adaptive Rood, and Phase Correlation.  Because we are expecting to receive many frames every second, the computer should be able to calculate the velocities of located objects with minimal overhead and maximum speed.
 
-A Small Diamond Search Pattern (SDSP) is a heavily simplified version of what is referred to as an exhaustive search.  In a sense, an exhaustive search is a brute-force application to find the object's motion between frames, in any possible direction.  SDSP approximates the boundary conditions of an exhaustive search by searching in 8 directions around an object to where it may have traveled.  It repeats this any number of times until it believes the new location is approximately correct.  This method has very small variance from an exhaustive search while offering very reliable velocities when set up correctly\footnote{ncbi.nlm.nih.gov. [Online]. Available: https://www.ncbi.nlm.nih.gov/labs/articles/18255398/ . [Accessed: 15-Nov-2016] }.
+A Small Diamond Search Pattern (SDSP) is a heavily simplified version of what is referred to as an exhaustive search.  In a sense, an exhaustive search is a brute-force application to find the object's motion between frames, in any possible direction.  SDSP approximates the boundary conditions of an exhaustive search by searching in 8 directions around an object to where it may have traveled.  It repeats this any number of times until it believes the new location is approximately correct.  This method has very small variance from an exhaustive search while offering very reliable velocities when set up correctly [15].
+%\footnote{ncbi.nlm.nih.gov. [Online]. Available: https://www.ncbi.nlm.nih.gov/labs/articles/18255398/ . [Accessed: 15-Nov-2016] }.
 
-The Adaptive Rood Pattern Search is an algorithm that takes an object's previous motion and assumes it will approximately continue to use that motion between frames.  This allows it to potentially jump to the answer immediately, though in reality it will self-correct in a large number of cases.  This self-correction takes place through the use of a Diamond Search pattern, a variant of which was discussed above, after which it returns a velocity\footnote{semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/7f78/41b7b9c98b1e1f52282bdc3c2710cf83d3f0.pdf. [Accessed: 15-Nov-2016] }.
+The Adaptive Rood Pattern Search is an algorithm that takes an object's previous motion and assumes it will approximately continue to use that motion between frames.  This allows it to potentially jump to the answer immediately, though in reality it will self-correct in a large number of cases.  This self-correction takes place through the use of a Diamond Search pattern, a variant of which was discussed above, after which it returns a velocity [16].
+%\footnote{semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/7f78/41b7b9c98b1e1f52282bdc3c2710cf83d3f0.pdf. [Accessed: 15-Nov-2016] }.
 
-Phase Correlation is used to determine how far an object has moved on screen by comparing the two images and using the fourier shift transform to locate the change in x and y which the object traveled.  This gives highly accurate results when it works, but its reliability comes at the cost of higher processing time required\footnote{semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/2c6c/6d3c94322e9ff75ff2143f7028bfab2b3c5f.pdf. [Accessed: 15-Nov-2016] }. \\
+Phase Correlation is used to determine how far an object has moved on screen by comparing the two images and using the fourier shift transform to locate the change in x and y which the object traveled.  This gives highly accurate results when it works, but its reliability comes at the cost of higher processing time required [17].
+%\footnote{semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/2c6c/6d3c94322e9ff75ff2143f7028bfab2b3c5f.pdf. [Accessed: 15-Nov-2016] }. \\
 
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -445,33 +465,110 @@ Phase Correlation is clearly not an option we will wish to pursue for this proje
 \newpage
 \section{Conclusion}
 
-\section{References}
+The above shows what we will prioritize when developing the project.
 
-[1]"ABOUT | OpenCV", Opencv.org, 2016. [Online]. Available: http://opencv.org/about.html. [Accessed: 16- Nov- 2016].
+\newpage
+\begin{thebibliography}{99}
+ %1
+\bibitem{long1}
+B. Clark, 'All You Need to Know about Video Codecs, Containers, and Compression', 2015. [Online]. Available: http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/ . [Accessed: 15-Nov-2016]
 
-[2]"LTI-Lib", Ltilib.sourceforge.net, 2016. [Online]. Available: http://ltilib.sourceforge.net/doc/homepage/index.shtml. [Accessed: 16- Nov- 2016].
+\bibitem{long2}
+xvid.com, 'Home', 2016. [Online]. Available: https://www.xvid.com/ . [Accessed: 15-Nov-2016]
 
-[3]"VXL: 1. Introduction", Public.kitware.com, 2016. [Online]. Available: http://public.kitware.com/vxl/doc/release/books/core/book\_1.html. [Accessed: 16- Nov- 2016].
+\bibitem{long3}
+ffmpeg.org, 'About FFmpeg'. [Online]. Available: http://ffmpeg.org/about.html . [Accessed: 15-Nov-2016]
 
-[4]"VXL - C++ Libraries for Computer Vision", Vxl.sourceforge.net, 2016. [Online]. Available: http://vxl.sourceforge.net/. [Accessed: 16- Nov- 2016].
+\bibitem{long4}
+E. Lorrain, 'A Short Guide to Choosing a Digital Format for Video Archiving Masters', 2014. [Online]. Available: https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters . [Accessed: 15-Nov-2016]
+ %5
+\bibitem{long5}
+CS MSU Graphics \& Media Lab, \textit{Lossless Video Codecs Comparison}, Moscow: CS MSU Graphics \& Media Lab, 2004, p.14[Online]. Available: http://compression.ru/video/codec\_comparison/pdf/lossless\_codecs\_test\_en.pdf . [Accessed: 15-Nov-2016]
 
-[5]"Computer Recognition System For Detecting And Tracking Objects In 3D Environment", Csus-dspace.calstate.edu, 2016. [Online]. Available: http://csus-dspace.calstate.edu/bitstream/handle/10211.9/1249/Introduction%20to%20computer%20vision.pdf?sequence=2. [Accessed: 16- Nov- 2016].
+\bibitem{long6}
+Vcodex, 'H.264 Advanced Video Coding'. [Online]. Available: https://www.vcodex.com/h264-resources/ . [Accessed: 15-Nov-2016]
 
-[6]U. Sinha, "OpenCV vs VXL vs LTI: Performance Test - AI Shack - Tutorials for OpenCV, computer vision, deep learning, image processing, neural networks and artificial intelligence.", Aishack.in, 2016. [Online]. Available: http://aishack.in/tutorials/opencv-vs-vxl-vs-lti-performance-test/. [Accessed: 16- Nov- 2016].
+\bibitem{long7}
+openh264.org, 'FAQ'. [Online]. Available: http://www.openh264.org/faq.html . [Accessed: 15-Nov-2016]
 
-%http://www.cs.utexas.edu/~grauman/courses/spring2008/slides/Faces_demo.pdf [7]
+\bibitem{long8}
+H. Lewetz, et al., 'Comparing Video Codecs and Containers for Archives', 2013. [Online]. Available: http://download.das-werkstatt.com/pb/mthk/info/video/comparison\_video\_codecs\_containers.html\#codec\_tests . [Accessed: 15-Nov-2016]
 
-%http://docs.opencv.org/trunk/d1/dc5/tutorial_background_subtraction.html [8]
+\bibitem{livefeed1}
+compression.ru. [Online]. Available: http://compression.ru/video/codec\_comparison/pdf/msu\_lossless\_codecs\_comparison\_2007\_eng.pdf . [Accessed: 15-Nov-2016]
+%10
+\bibitem{livefeed2}
+microsoft.com. [Online]. Available: https://msdn.microsoft.com/en-us/library/windows/desktop/dd743961(v=vs.85).aspx . [Accessed: 15-Nov-2016]
 
-%http://docs.opencv.org/3.1.0/db/d5c/tutorial_py_bg_subtraction.html [9]
+\bibitem{livefeed3}
+vcodex.com. [Online]. Available: https://www.vcodex.com/news/how-to-stream-better-quality-video-part-1-basics-and-good-practices/ . [Accessed: 15-Nov-2016]
 
-%http://www.cv-foundation.org/openaccess/content_cvpr_2013/papers/Li_Learning_SURF_Cascade_2013_CVPR_paper.pdf [10]
+\bibitem{over1}
+obsproject.com. [Online]. Available: https://obsproject.com/ . [Accessed: 15-Nov-2016] 
 
-%http://www.iorgsoft.com/compare/avi-vs-mp4-comparison.html[11]
+\bibitem{over2}
+techsmith.com. [Online]. Available: https://www.techsmith.com/camtasia.html . [Accessed: 15-Nov-2016]
 
-%http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/
+\bibitem{over3}
+xsplit.com. [Online]. Available: https://www.xsplit.com/ . [Accessed: 15-Nov-2016]
+%15
+\bibitem{livecomp1}
+ ncbi.nlm.nih.gov. [Online]. Available: https://www.ncbi.nlm.nih.gov/labs/articles/18255398/ . [Accessed: 15-Nov-2016]
 
-%http://www.techhive.com/article/213612/all_about_video_codecs_and_containers.html?page=2 [13]
+\bibitem{livecomp2}
+semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/7f78/41b7b9c98b1e1f52282bdc3c2710cf83d3f0.pdf. [Accessed: 15-Nov-2016]
+
+\bibitem{livecomp3}
+ semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/2c6c/6d3c94322e9ff75ff2143f7028bfab2b3c5f.pdf. [Accessed: 15-Nov-2016]
+
+\bibitem{vision1}
+"ABOUT | OpenCV", Opencv.org, 2016. [Online]. Available: http://opencv.org/about.html. [Accessed: 16- Nov- 2016].
+
+\bibitem{vision2}
+"LTI-Lib", Ltilib.sourceforge.net, 2016. [Online]. Available: http://ltilib.sourceforge.net/doc/homepage/index.shtml. [Accessed: 16- Nov- 2016].
+%20
+\bibitem{vision3}
+"VXL: 1. Introduction", Public.kitware.com, 2016. [Online]. Available: http://public.kitware.com/vxl/doc/release/books/core/book\_1.html. [Accessed: 16- Nov- 2016].
+
+\bibitem{vision4}
+"VXL - C++ Libraries for Computer Vision", Vxl.sourceforge.net, 2016. [Online]. Available: http://vxl.sourceforge.net/. [Accessed: 16- Nov- 2016].
+
+\bibitem{vision5}
+"Computer Recognition System For Detecting And Tracking Objects In 3D Environment", Csus-dspace.calstate.edu, 2016. [Online]. Available: http://csus-dspace.calstate.edu/bitstream/handle/10211.9/1249/Introduction\%20to\%20computer\%20vision.pdf?sequence=2. [Accessed: 16- Nov- 2016].
+
+\bibitem{vision6}
+U. Sinha, "OpenCV vs VXL vs LTI: Performance Test - AI Shack - Tutorials for OpenCV, computer vision, deep learning, image processing, neural networks and artificial intelligence.", Aishack.in, 2016. [Online]. Available: http://aishack.in/tutorials/opencv-vs-vxl-vs-lti-performance-test/. [Accessed: 16- Nov- 2016].
+
+\bibitem{tracking1}
+http://www.cs.utexas.edu/~grauman/courses/spring2008/slides/Faces\_demo.pdf
+%25
+\bibitem{tracking2}
+http://docs.opencv.org/trunk/d1/dc5/tutorial\_background\_subtraction.html
+
+\bibitem{tracking3}
+http://docs.opencv.org/3.1.0/db/d5c/tutorial\_py\_bg\_subtraction.html
+
+\bibitem{tracking4}
+http://www.cv-foundation.org/openaccess/content\_cvpr\_2013/papers/Li\_Learning\_SURF\_Cascade\_2013\_CVPR\_paper.pdf
+
+\bibitem{longstore1}
+http://www.iorgsoft.com/compare/avi-vs-mp4-comparison.html
+
+\bibitem{longstore2}
+http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/
+
+\bibitem{longstore3}
+http://www.techhive.com/article/213612/all\_about\_video\_codecs\_and\_containers.html?page=2
+
+%\bibitem{longstore4}
+
+\end{thebibliography}
+
+%[11]
+
+%
+
+%h [13]
 
 %possible sections:  
 
