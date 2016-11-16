@@ -204,9 +204,27 @@ Background subraction
 \newpage
 \subsection{Live Compression} %Dylan
 
-No compression
-Camera live compresses
-Computer live compresses
+When the program is running, the camera will be actively generating data.  Videos by their basic nature require large amounts of data to be transferred.  A method to reduce the load of the video passing through is to compress it at some step of the way.  However, compression carries with it potential dips in video quality which may be required to accurately identify objects.
+
+The most basic approach to the problem is not to compress the video at all.  This ensures the entire image is recieved by the computer which is doing the processing.  This however is not an ideal solution, because while it is recieving the maximum quality image, it could als has to transmit the entire image to the display port, which often is smaller than the resolution the video was taken at.  This also means that while it has the highest visual fidelity, it has to parse that much more imagery before it can spit out a response\footnote{compression.ru. [Online]. Available: http://compression.ru/video/codec\_comparison/pdf/msu\_lossless\_codecs\_comparison\_2007\_eng.pdf . [Accessed: 15-Nov-2016] }. 
+
+A second method to consider is that the computer does video compression in addition to its other duties, every frame.  This offers the option to output significantly less imagery to the display port each frame, at no loss to incoming video.  Alternatively, the computer can also compress the image before it begins its scans to lessen the amount of work required to scan the entire image.  It is fully possible that the image will not degrade in a significant enough manner under compression that it would affect the object recognition\footnote{microsoft.com. [Online]. Available: https://msdn.microsoft.com/en-us/library/windows/desktop/dd743961(v=vs.85).aspx . [Accessed: 15-Nov-2016] }. 
+
+If the image getting compressed would not affect the object recognition, then it would be beneficial to offload as much processing the computer would perform as possible.  To this end, it is possible that modern video cameras can compress the frames before sending the images back to the computer.  Doing so would offload a decent amount of stress from the computer when processing the image, as well as when recieving the data from the camera in the first place\footnote{vcodex.com. [Online]. Available: https://www.vcodex.com/news/how-to-stream-better-quality-video-part-1-basics-and-good-practices/ . [Accessed: 15-Nov-2016] }. \\
+
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Name} & \textbf{Processing Strain} & \textbf{Image Quality} & \textbf{Speed} \\
+  \hline
+  No Compression & High & High & Slow \\ 
+  \hline
+  Computer Compression & Very High & Moderate & Moderate  \\ 
+  \hline
+  Camera Compression & Low & Moderate & Fast \\ 
+  \hline
+\end{tabular} \\
+
+No compression, while the ideal of recieving perfect image quality is certainly a respectable endeavor, is unfeasable for this project.  In addition, the quality loss from compression does not seem to my human eye to be significant in any measure.  To that end, it seems most beneficial to move as much strain off the computer as possible and, therefore, attempt to get a camera which will automatically compress the frames before they're sent for processing.
 
 \newpage
 \subsection{UI Overlay} %Dylan %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
