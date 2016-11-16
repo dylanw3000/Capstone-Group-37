@@ -35,14 +35,55 @@ This document is a detailed review of multiple technology options considered for
 
 \subsection{Live Data Feed} %Alex
 
-Both images simultaneously
-Both images plus depth information
-Singular image with depth
+
+%Both images simultaneously
+%Both images plus depth information
+%Singular image with depth
+
+The options for Live Data Feed are processing both images simultaneously, both images plus distance information, and a single image with distance information.
+The goal for this piece is how the information should be passed into the velocity algorithm.
+The velocity algorithm will need to know how the object is moving perpendicular to the camera as well as how it is moving parallel to the camera.
+Because of this, the algorithm will need to know the distance the object is from the camera and whether or not it is changing as the object moves.
+There are a couple criteria for this piece.
+The first is simplicity and ease of use, as we have a limited timeframe for this product.
+Second is the amount of data that is being transmitted.
+The more data being transmitted, the longer the process will take.
+
+For processing both images simultaneously, the program will pass the images from both cameras to the velocity algorithm and the velocity algorithm will have to compute the distance to the object as before computing the velocity of the object.
+Computing the distance will add some complexity to the this method, but not a lot, as the distance will have to be calculated at some point, but this may not be the most efficient place for this computation.
+The amount of data being transferred is significant because 2 video feeds is a lot of information, but the lack of the extra distance information means that it is not the worst it could be.
+
+For processing both images plus distance information, the program will pass the images from both cameras to the velocity algorithm as well as the distance to the object.
+Having the distance computed before calculating the velocity will reduce the complexity of this piece by a fair amount, though the distance will still have to be calculated at some point.
+The amount of data being transferred is very significant in this option as two video streams is a lot of data and then the distance information of top is a lot.
+
+For processing a single image with distance information, the program will only pass the video feed from one of the cameras, probably an arbitrary choice of always the left or the right camera, to the velocity algorithm.
+With the distance already being computed this will have a small complexity as the algorithm will only need to compute the velocity.
+The amount of data being transmitted will be significantly less than the other two options, having only one video feed with extra data.
+
+
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Option} & \textbf{Difficulty} & \textbf{amount of data} \\
+		\hline
+		2 Image & Hard & Medium \\
+		\hline
+		2 Image and Data & Easy & High\\
+		\hline
+		1 Image and Data & Easy & Low \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+Selection
+Because the single image with distance information is tied for the lowest difficult but also has a significantly less data transmission it is the best choice
 
 \newpage
 \subsection{Synchronization} %Alex
 
-%two cameras, each sends images and computer works to compensate for any desyncronization
+%two cameras, each sends images and computer works to compensate for any desynchronization
 %two cameras with global shutter, send back 2 images
 %2 cameras which do image splicing and send back spliced image to computer
 
@@ -57,7 +98,7 @@ Due to our projects limited timeline, we need a method that will be simple and f
 
 The first method is have to two cameras with no synchronization.
 If we were to use this method then we would have to take into account the difference in position between cameras.
-Depending on the speed of the type of object this could be significant.
+Depending on the velocity of the type of object this could be significant.
 If we choose people as our object, this difference will be fairly little.
 However, if we to use vehicles as our object, then the difference will be more significant.
 This will require a fairly complicated algorithm to account for the difference in either case.
@@ -72,7 +113,7 @@ Alternatively, we would have to find a hardware work around, but as our group ha
 
 The third method is to use a stereoscopic camera.
 This would be a simpler solution as the camera itself will deal with the synchronization of the shutters.
-However, this would come at the price of not being able to choose how far appart the camera lenses are.
+However, this would come at the price of not being able to choose how far apart the camera lenses are.
 Though there could be other benefits, depending on the camera.
 
 \begin{center}
@@ -112,27 +153,27 @@ This will reduce the size of the video as much as possible.
 There are several factors to consider when looking at video compression codecs.
 The first is whether or not it is lossless.
 When compressing information, especially pictures and videos, the compression codecs will often save space by removing data, often in the form of merging pixels, leading to a lower resolution, these are called lossy codecs.
-While a lossless codec is obviously prefered, there are not many lossless video compression methods available and they often have limited compression.
+While a lossless codec is obviously preferred, there are not many lossless video compression methods available and they often have limited compression.
 Lossy codecs generally offer a greater reduction of file size, with the amount of data lost, depending on the codec.
 This could be an acceptable tradeoff, depending on the size of the file and amount of quality lost.
 Second is the amount of compression, often expressed as a ratio.
 This is the ratio of the size of the original video file to the size of the compressed file.
-This can be difficult to judge as some videos compress better than other depending on the what is being recorded.
+This can be difficult to judge as some videos compress better than other depending on what is being recorded.
 Third, price is almost always a factor, as it is in this case.
 If there is an open source alternative that is comparable to a paid version, then the open source would be more favorable.
 
-Xvid is a an open source codec alternatice to a commercially sold codec, DivX \footnote{B. Clark, 'All You Need to Know about Video Codecs, Containers, and Compression', 2015. [Online]. Available: http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/ . [Accessed: 15-Nov-2016] }. %[2]
+Xvid is a an open source codec alternative to a commercially sold codec, DivX \footnote{B. Clark, 'All You Need to Know about Video Codecs, Containers, and Compression', 2015. [Online]. Available: http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/ . [Accessed: 15-Nov-2016] }. %[2]
 Xvid claims to be able to "compress video at a ratio of 200:1 or more" \footnote{xvid.com, 'Home', 2016. [Online]. Available: https://www.xvid.com/ . [Accessed: 15-Nov-2016] }. %[1].
 While impressive, this is likely only under certain conditions.
 Xvid is a "'lossy' compression but aims at removing just those picture details that are not important for human perception" \textsuperscript{2}. %[1].
 
 FFV1 is a lossless video codec that is a part of FFmpeg a "leading multimedia framework, able to decode, encode, transcode, mux, demux, steam, filter and play pretty much anything that humans and machines have created"\footnote{ffmpeg.org, 'About FFmpeg'. [Online]. Available: http://ffmpeg.org/about.html . [Accessed: 15-Nov-2016] }. %[3].
-Two sources have reported FFV1's compression ratio as roughly 100GB per hour to 45-50GB per hour \footnote{E. Lorrain, 'A Short Guide to Choosing a Digital Format for Video Archiving Masters', 2014. [Online]. Available: https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters . [Accessed: 15-Nov-2016] }, approximately 2:1, to rougly 1.2:1 to 2.5:1\footnote{CS MSU Graphics \& Media Lab, \textit{Lossless Video Codecs Comparison}, Moscow: CS MSU Graphics \& Media Lab, 2004, p.14[Online]. Available: http://compression.ru/video/codec\_comparison/pdf/lossless\_codecs\_test\_en.pdf . [Accessed: 15-Nov-2016] }. % [4], [5]
+Two sources have reported FFV1's compression ratio as roughly 100GB per hour to 45-50GB per hour \footnote{E. Lorrain, 'A Short Guide to Choosing a Digital Format for Video Archiving Masters', 2014. [Online]. Available: https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters . [Accessed: 15-Nov-2016] }, approximately 2:1, to roughly 1.2:1 to 2.5:1\footnote{CS MSU Graphics \& Media Lab, \textit{Lossless Video Codecs Comparison}, Moscow: CS MSU Graphics \& Media Lab, 2004, p.14[Online]. Available: http://compression.ru/video/codec\_comparison/pdf/lossless\_codecs\_test\_en.pdf . [Accessed: 15-Nov-2016] }. % [4], [5]
 
-H.264 is a video codec that was created by International Telecommunication Union\footnote{Vcodex, 'H.264 Advanced Video Coding'. [Online]. Available: https://www.vcodex.com/h264-resources/ . [Accessed: 15-Nov-2016] }, that has become "an industry standard for video compression"\textsuperscript{12}. % [6].
+H.264 is a video codec that was created by International Telecommunication Union\footnote{Vcodex, 'H.264 Advanced Video Coding'. [Online]. Available: https://www.vcodex.com/h264-resources/ . [Accessed: 15-Nov-2016] }, that has become "an industry standard for video compression"\textsuperscript{6}. % [6].
 Cisco has recently decided to release an open source version under a BSD license and cover the royalties for anyone using their binary files\footnote{openh264.org, 'FAQ'. [Online]. Available: http://www.openh264.org/faq.html . [Accessed: 15-Nov-2016] }. % [7].
-While this would allow the our product to use the H.264 codex, it would restrict us in the need to only use their binaries and always keep them up to date.
-Should their be an issue, this could cause significant legal trouble.
+While this would allow our product to use the H.264 codex, it would restrict us in the need to only use their binaries and always keep them up to date.
+Should there be an issue, this could cause significant legal trouble.
 H.264 has a lossless version that has a ratio of roughly 2:1\footnote{H. Lewetz, et al., 'Comparing Video Codecs and Containers for Archives', 2013. [Online]. Available: http://download.das-werkstatt.com/pb/mthk/info/video/comparison\_video\_codecs\_containers.html\#codec\_tests . [Accessed: 15-Nov-2016] }. %[8].
 
 \begin{center}
@@ -256,11 +297,11 @@ Background subraction
 
 When the program is running, the camera will be actively generating data.  Videos by their basic nature require large amounts of data to be transferred.  A method to reduce the load of the video passing through is to compress it at some step of the way.  However, compression carries with it potential dips in video quality which may be required to accurately identify objects.
 
-The most basic approach to the problem is not to compress the video at all.  This ensures the entire image is recieved by the computer which is doing the processing.  This however is not an ideal solution, because while it is recieving the maximum quality image, it could als has to transmit the entire image to the display port, which often is smaller than the resolution the video was taken at.  This also means that while it has the highest visual fidelity, it has to parse that much more imagery before it can spit out a response\footnote{compression.ru. [Online]. Available: http://compression.ru/video/codec\_comparison/pdf/msu\_lossless\_codecs\_comparison\_2007\_eng.pdf . [Accessed: 15-Nov-2016] }. 
+The most basic approach to the problem is not to compress the video at all.  This ensures the entire image is received by the computer which is doing the processing.  This however is not an ideal solution, because while it is receiving the maximum quality image, it could also has to transmit the entire image to the display port, which often is smaller than the resolution the video was taken at.  This also means that while it has the highest visual fidelity, it has to parse that much more imagery before it can spit out a response\footnote{compression.ru. [Online]. Available: http://compression.ru/video/codec\_comparison/pdf/msu\_lossless\_codecs\_comparison\_2007\_eng.pdf . [Accessed: 15-Nov-2016] }. 
 
 A second method to consider is that the computer does video compression in addition to its other duties, every frame.  This offers the option to output significantly less imagery to the display port each frame, at no loss to incoming video.  Alternatively, the computer can also compress the image before it begins its scans to lessen the amount of work required to scan the entire image.  It is fully possible that the image will not degrade in a significant enough manner under compression that it would affect the object recognition\footnote{microsoft.com. [Online]. Available: https://msdn.microsoft.com/en-us/library/windows/desktop/dd743961(v=vs.85).aspx . [Accessed: 15-Nov-2016] }. 
 
-If the image getting compressed would not affect the object recognition, then it would be beneficial to offload as much processing the computer would perform as possible.  To this end, it is possible that modern video cameras can compress the frames before sending the images back to the computer.  Doing so would offload a decent amount of stress from the computer when processing the image, as well as when recieving the data from the camera in the first place\footnote{vcodex.com. [Online]. Available: https://www.vcodex.com/news/how-to-stream-better-quality-video-part-1-basics-and-good-practices/ . [Accessed: 15-Nov-2016] }. \\
+If the image getting compressed would not affect the object recognition, then it would be beneficial to offload as much processing the computer would perform as possible.  To this end, it is possible that modern video cameras can compress the frames before sending the images back to the computer.  Doing so would offload a decent amount of stress from the computer when processing the image, as well as when receiving the data from the camera in the first place\footnote{vcodex.com. [Online]. Available: https://www.vcodex.com/news/how-to-stream-better-quality-video-part-1-basics-and-good-practices/ . [Accessed: 15-Nov-2016] }. \\
 
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -274,7 +315,7 @@ If the image getting compressed would not affect the object recognition, then it
   \hline
 \end{tabular} \\
 
-No compression, while the ideal of recieving perfect image quality is certainly a respectable endeavor, is unfeasable for this project.  In addition, the quality loss from compression does not seem to my human eye to be significant in any measure.  To that end, it seems most beneficial to move as much strain off the computer as possible and, therefore, attempt to get a camera which will automatically compress the frames before they're sent for processing.
+No compression, while the ideal of receiving perfect image quality is certainly a respectable endeavor, is unfeasible for this project.  In addition, the quality loss from compression does not seem to my human eye to be significant in any measure.  To that end, it seems most beneficial to move as much strain off the computer as possible and, therefore, attempt to get a camera which will automatically compress the frames before they're sent for processing.
 
 \newpage
 \subsection{UI Overlay} %Dylan %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,7 +326,7 @@ Open Broadcaster Software, frequently referred to as OBS, is an open source proj
 
 Camtasia is, at its core, a video editing software.  Since the rise in popularity of live streaming, Camtasia's creators (TechSmith) have added the capability to support live video streams.  They have an extensive toolset to allow you to manipulate what is shown on-screen due to their roots in video editing, but that also comes at the cost of marginally more overhead when running compared to other modern solutions\footnote{techsmith.com. [Online]. Available: https://www.techsmith.com/camtasia.html . [Accessed: 15-Nov-2016] }.
 
-XSplit is a software designed primarially for use in web streaming a video.  As a result, it is designed to be run in the background while more strenuous tasks simultaneously run on the computer.  Popular addon packages allow it to generate pop-in elements on the overlay, primarially for Twitch donation notifications, but it can potentially be retooled for dynamic placement\footnote{xsplit.com. [Online]. Available: https://www.xsplit.com/ . [Accessed: 15-Nov-2016] }. \\
+XSplit is a software designed primarily  for use in web streaming a video.  As a result, it is designed to be run in the background while more strenuous tasks simultaneously run on the computer.  Popular add-on packages allow it to generate pop-in elements on the overlay, primarily  for Twitch donation notifications, but it can potentially be retooled for dynamic placement\footnote{xsplit.com. [Online]. Available: https://www.xsplit.com/ . [Accessed: 15-Nov-2016] }. \\
 
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -304,13 +345,13 @@ Based on the capabilities of review technologies, OBS Studio is the selection fo
 \newpage
 \subsection{Video to Velocity Formulas} %Dylan %Apparently a good term is Motion Estimation
 
-In a sense video to velocity formulas already exist, however they exist to view their targets from a known, fixed distance and take advantage of hard-coded values.  In that way, we can certainly make use of what has been made, but we will have to heavily modify it for our purposes.  We can do so by using one variety of block-matching algorithm.  Our options include SDSP, Adaptive Rood, and Phase Correlation.  Because we are expecting to recieve many frames every second, the computer should be able to calculate the velocities of located objects with minimal overhead and maximum speed.
+In a sense video to velocity formulas already exist, however they exist to view their targets from a known, fixed distance and take advantage of hard-coded values.  In that way, we can certainly make use of what has been made, but we will have to heavily modify it for our purposes.  We can do so by using one variety of block-matching algorithm.  Our options include SDSP, Adaptive Rood, and Phase Correlation.  Because we are expecting to receive many frames every second, the computer should be able to calculate the velocities of located objects with minimal overhead and maximum speed.
 
-A Small Diamond Search Pattern (SDSP) is a heavily simplified version of what is referred to as an exhaustive search.  In a sense, an exhaustive search is a brute-force application to find the object's motion between frames, in any possible direction.  SDSP approximates the boundary conditions of an exhaustive search by searching in 8 directions around an object to where it may have traveled.  It repeats this any number of times until it believes the new location is approximately correct.  This method has very small variance from an exhaustive search while offering very reliable velocitied when set up correctly\footnote{ncbi.nlm.nih.gov. [Online]. Available: https://www.ncbi.nlm.nih.gov/labs/articles/18255398/ . [Accessed: 15-Nov-2016] }.
+A Small Diamond Search Pattern (SDSP) is a heavily simplified version of what is referred to as an exhaustive search.  In a sense, an exhaustive search is a brute-force application to find the object's motion between frames, in any possible direction.  SDSP approximates the boundary conditions of an exhaustive search by searching in 8 directions around an object to where it may have traveled.  It repeats this any number of times until it believes the new location is approximately correct.  This method has very small variance from an exhaustive search while offering very reliable velocities when set up correctly\footnote{ncbi.nlm.nih.gov. [Online]. Available: https://www.ncbi.nlm.nih.gov/labs/articles/18255398/ . [Accessed: 15-Nov-2016] }.
 
 The Adaptive Rood Pattern Search is an algorithm that takes an object's previous motion and assumes it will approximately continue to use that motion between frames.  This allows it to potentially jump to the answer immediately, though in reality it will self-correct in a large number of cases.  This self-correction takes place through the use of a Diamond Search pattern, a variant of which was discussed above, after which it returns a velocity\footnote{semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/7f78/41b7b9c98b1e1f52282bdc3c2710cf83d3f0.pdf. [Accessed: 15-Nov-2016] }.
 
-Phase Correlation is used to determine how far an object has moved on screen by comparing the two images and using the fourier shift transform to locate the change in x and y which the object traveled.  This gives highly accurate results when it works, but its reliability  comes at the cost of higher processing time required\footnote{semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/2c6c/6d3c94322e9ff75ff2143f7028bfab2b3c5f.pdf. [Accessed: 15-Nov-2016] }. \\
+Phase Correlation is used to determine how far an object has moved on screen by comparing the two images and using the fourier shift transform to locate the change in x and y which the object traveled.  This gives highly accurate results when it works, but its reliability comes at the cost of higher processing time required\footnote{semanticscholar.org. [Online]. Available: https://pdfs.semanticscholar.org/2c6c/6d3c94322e9ff75ff2143f7028bfab2b3c5f.pdf. [Accessed: 15-Nov-2016] }. \\
 
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -324,7 +365,7 @@ Phase Correlation is used to determine how far an object has moved on screen by 
   \hline
 \end{tabular} \\
 
-Phase Correlation is clearly not an option we will wish to persue for this project, based on the conditions listed above.  The SDSP had the lowest overhead of any method available, however Adaptive Rood was notably faster in many scenarios.  It is worth noting Adaptive Rood has parts based around Diamond Search patterns which would make it more advanced than the pattern by itself, however it is questionable wether the objects in frame would move fast enough that we would need to predict their motion.  That said, I am selecting the Adaptive Rood method for this project.
+Phase Correlation is clearly not an option we will wish to pursue for this project, based on the conditions listed above.  The SDSP had the lowest overhead of any method available, however Adaptive Rood was notably faster in many scenarios.  It is worth noting Adaptive Rood has parts based around Diamond Search patterns which would make it more advanced than the pattern by itself, however it is questionable whether the objects in frame would move fast enough that we would need to predict their motion.  That said, I am selecting the Adaptive Rood method for this project.
 
 \newpage
 \section{Conclusion}
@@ -362,6 +403,6 @@ Phase Correlation is clearly not an option we will wish to persue for this proje
 %computer vision
 %speed formula
 %legal accountability
-%internal clocks/global shutters (syncronization)
+%internal clocks/global shutters (synchronization)
 
 \end{document}
