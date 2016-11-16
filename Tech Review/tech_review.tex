@@ -42,9 +42,58 @@ Singular image with depth
 \newpage
 \subsection{Synchronization} %Alex
 
-two cameras, each sends images and computer works to compensate for any desyncronization
-two cameras with global shutter, send back 2 images
-2 cameras which do image splicing and send back spliced image to computer
+%two cameras, each sends images and computer works to compensate for any desyncronization
+%two cameras with global shutter, send back 2 images
+%2 cameras which do image splicing and send back spliced image to computer
+
+The options that we will be looking at for this technology are having two cameras and having no synchronization, having two cameras and using a global shutter to synchronize the camera, and using a stereoscopic camera which will self-synchronize.
+The goal of this piece is to decide the best method for synchronizing, or not synchronizing, the two cameras we will be using the track the objects.
+This is important because we will be performing calculations based on the images from both cameras. 
+Since the objects we will be tracking are moving, we will need to know if the two images were taken at the same time.
+If the cameras are synchronized, then we can perform calculations knowing the object is in the same place.
+If the cameras are unsynchronized then the objects will be in different locations and we will have to take that into account.
+The main criteria that our group will be looking at is ease of use.
+Due to our projects limited timeline, we need a method that will be simple and fast to pick up.
+
+The first method is have to two cameras with no synchronization.
+If we were to use this method then we would have to take into account the difference in position between cameras.
+Depending on the speed of the type of object this could be significant.
+If we choose people as our object, this difference will be fairly little.
+However, if we to use vehicles as our object, then the difference will be more significant.
+This will require a fairly complicated algorithm to account for the difference in either case.
+The framerate of the camera will also play a role in this.
+The lower the framerate the greater the amount that the two cameras can be off.
+
+The second method is to have two cameras that have a global shutter, most likely set by the computer controlling the cameras.
+This could be fairly difficult.
+Depending on the type of camera, it may not be possible to set the shutter from the computer running the cameras.
+This would mean that we would need to attempt to start them at the same time and hope that there is no variation in the real shutter speed, otherwise there could still be variation.
+Alternatively, we would have to find a hardware work around, but as our group has limited knowledge of video camera hardware, this would be very difficult, especially with our limited timeframe.
+
+The third method is to use a stereoscopic camera.
+This would be a simpler solution as the camera itself will deal with the synchronization of the shutters.
+However, this would come at the price of not being able to choose how far appart the camera lenses are.
+Though there could be other benefits, depending on the camera.
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Type} & \textbf{Difficulty} \\
+		\hline
+		No Sync & Hard \\
+		\hline
+		Global Shutter & Medium\\
+		\hline
+		Stereoscopic camera & easy \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+
+Selection
+
+Due to us needing the easiest solution to implement, the stereoscopic camera is the best choice.
 
 
 \newpage
@@ -53,7 +102,7 @@ two cameras with global shutter, send back 2 images
 %Lossy
 %No Compression
 
-The options that we will be looking at are Xvid, FFV1, OpenH264.
+The options that we will be looking at are Xvid, FFV1, and OpenH264.
 The goals for this piece of the project is to compress the video after it has been displayed to the user, to be kept for long term, should they be needed at a later date.
 With our product, it is likely that the user will be leaving our product running for a significant amount of time, possibly hours.
 When this happens, video files can become rather large.
@@ -86,19 +135,20 @@ While this would allow the our product to use the H.264 codex, it would restrict
 Should their be an issue, this could cause significant legal trouble.
 H.264 has a lossless version that has a ratio of roughly 2:1\footnote{H. Lewetz, et al., 'Comparing Video Codecs and Containers for Archives', 2013. [Online]. Available: http://download.das-werkstatt.com/pb/mthk/info/video/comparison\_video\_codecs\_containers.html\#codec\_tests . [Accessed: 15-Nov-2016] }. %[8].
 
-\begin{tabular}{|c|c|c|c|}
-	\hline
-	\textbf{Codec} & \textbf{Lossless} & \textbf{Compression Ratio} & \textbf{Open Source} \\
-	\hline
-	Xvid & No & 200:1(theoretical) & Yes \\
-	\hline
-	FFV1 & Yes & 2:1 (roughly) & Yes \\
-	\hline
-	OpenH264 & Yes & 2:1 (roughly) & Yes (with caveat) \\
-	\hline
-	
-\end{tabular}
-
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Codec} & \textbf{Lossless} & \textbf{Compression Ratio} & \textbf{Open Source} \\
+		\hline
+		Xvid & No & 200:1(theoretical) & Yes \\
+		\hline
+		FFV1 & Yes & 2:1 (roughly) & Yes \\
+		\hline
+		OpenH264 & Yes & 2:1 (roughly) & Yes (with caveat) \\
+		\hline
+		
+	\end{tabular}
+\end{center}
 
 Selection
 
