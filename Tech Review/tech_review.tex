@@ -200,27 +200,57 @@ This means that FFV1 is the best option for the long term compression codec.
 \newpage
 \subsection{Long-Term Storage} %Ben
 
-The three option we have considered for video storage is .
-The 
-1 feed+data, 
-2 feeds no data to be re-calculated, 
-1 feed data baked into video
+The three option we have considered for video storage is Audio Video Interleave (AVI), Matroska Multimedia Container (MKV) and MP4.
+The goal of the storage is to use the best storage container based off of features and for our user needs.
+The container used is important because we plan on storing the videos so the user is able to go back and view the video feed.
+This however, creates problems for storage because raw video files can tend to be large in size and storing all of our video would just be impossible.
+Once the video is compressed with a codec, the container is going to be used to package the video.
+We are looking for a container that is capable of handing compressed files and storing them.
+
+AVI is an older container created by Microsoft. It features support almost any video format and audio format.
+Because it is an older container, it does lack a few features.
+The only supported devices are Microsoft devices.
+This means it won't be able to play on any apple device.
+AVI also tends to be larger than most video formats because of the lack of video compression features [11].
+
+MP4 is another container that is developed by the Motion Pictures Expert Group.
+The videos inside MP4 files are encoded with H.264 [12].
+MP4 is compressed using AAC encoding or lossy which allows for great storage [12].
+MP4 is compatible with devices like IPad, IPod, Android Phone and many others which gives it an edge on MKV and AVI [12].
+This reason alone makes it usually one of the most used containers.
+MP4 is also capable of handling high quality videos.
+However MKV tends to win in that category.
+
+MKV is another container that is used that can hold an unlimited number of video, audio, picture or subtitle tracks  that is developed by CorCode, Inc [13].
+MKV does a great job of handling high quality video [13].
+It is very flexible a
+It can't be played on portable devices including phones and tablets [13].
+However, MKV does support H.264/AVC which creates for efficient HD content playback.
 
 \begin{center}
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{|p{2cm}|p{5cm}|p{4cm}|p{4cm}|}
 		
 		\hline
-		\textbf{} & \textbf{Languages available} & \textbf{Features available} & \textbf{Performance (rank)} \\
+		\textbf{} & \textbf{Video formats supported} & \textbf{Codecs supported} & \textbf{Files size} \\
 		\hline
-		OpenCV & C, C++, Java, Python & Many & 1 \\
+		AVI & Almost anything & DivX, Xvid, Cinepak, Indeo, DV and Motion JPEG & Tend to be larger \\
 		\hline
-		LTI-lib & C, C++ & Many & 2 \\
+		MP4 & MPEG-2 Part 2, MPEG-4 ASP, H.264/MPEG-4 AVC, H.263, VC-1, Dirac & AVC M & Smaller than both AVI and MKV \\
 		\hline
-		VXL & C, C++ & Numerics, Imaging, geometry, streaming I/O & 3 \\
+		MKV & Almost anything & Almost any & Tend to be very large \\
 		\hline
 		
 	\end{tabular}
 \end{center}
+
+Choosing a container is a little challenging because many offer different benefits.
+MKV and AVI tend to have larger file sizes.
+However, this means it's quality is lot higher.
+Because we aren't necessarily looking for super high quality video playback, this may not be the best options for us.
+MP4 is also better supported on devices.
+This is a huge positive as it creates less chance for issues when playing back video.
+This means that MP4 is the best option for us.
+
 
 \newpage
 \subsection{Computer Vision Library} %Ben
@@ -284,13 +314,58 @@ This is a huge positive because it means more references and documents will be a
 For our project I think OpenCV would be a lot more useful based on the criteria tested.
 
 \newpage
-\subsection{Computer Vision Underlying Algorithm} %Ben
+\subsection{Object Tracking Methods} %Ben
 
-Haar cascades
-Background subraction
+The three options for object tracking algorithms are Haar Cascades, background subtraction, and Speeded Up Robust Features (SURF).
+Each method can be implemented using OpenCV libraries.
+The goal of each method is to offer an accurate and efficient way of identifying an object.
+To compare each option we will look at accuracy and speed of the method.
+Accuracy is a crucial criteria because a method that does not correctly identify an object will fail to calculate the speed.
+We are looking for the best option that will not produce a large number of false-positives as well as miss objects.
+The speed of the method is also very important because the method used should be capable of detecting an object that is moving quickly through the video feed.
 
-...
-...
+
+Haar Cascades is a great object detection method.
+It is capable of facial recognition, vehicle tracking, animal tracking, and many other objects [7].
+Haar cascades is most accurate with facial recognition with a precision rate of 80 percent [7].
+However, vehicle tracking precision is sub optimal with a precision rate of just below 50 percent [7].
+The accuracy of cars does go up when viewing cars from the side [7].
+
+Background subtraction is also another common method for object detection.
+According to documentation on OpenCV's website, "Background subtraction calculates the foreground mask performing a subtraction between the current frame and a background model."
+This means it is able to detect the background and then use that to detect the moving object.
+This is done in two steps, background initialization, and background update [8].
+This method is easy to apply when an image of the background alone is available [9].
+Because the method relies on moving objects, objects that are moving more slowly have a higher chance of error.
+Shadows can also cause error because shadows move as well but can be marked as foreground [9].
+
+Speeded Up Robust Features or SURF is another method capable of facial recognition and car detection.
+SURF relies on an image to determine key points.
+These key points are then used to detect the objects on the live feed.
+This means it will rely on a selection of images to create key points and then compare it to the live video feed to recognize objects, so creating a library with enough images is crucial to increase accuracy.
+
+\begin{center}
+	\begin{tabular}{|p{4cm}|p{5cm}|p{4cm}|}
+		
+		\hline
+		\textbf{} & \textbf{Acuracy} & \textbf{Speed} \\
+		\hline
+		Haar cascades & Accurate for facial recognition, less accurate for car detection. & Very fast \\
+		\hline
+		Background subtraction & Accurate for fast moving objects & fast \\
+		\hline
+		SURF & Accurate (\%80)  & Slightly slower than both Haar cascades and background subtraction \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+This option is a little more difficult to choose from.
+All options are viable and have positives as well as negatives.
+The accuracy testing was done in a research paper testing for the speed and accuracy of Haar cascades and SURF [10].
+The deciding factor is whether accuracy is more important than the speed of the detection.
+As long as the method is capable of detecting fast moving objects with a low rate of error, then accuracy should be the main deciding factor.
+Because Haar cascades is more accurate for facial detection, and SURF being less efficient, our best bet is to explore the background subtraction method.
 
 \newpage
 \subsection{Live Compression} %Dylan
@@ -384,13 +459,19 @@ Phase Correlation is clearly not an option we will wish to pursue for this proje
 
 [6]U. Sinha, "OpenCV vs VXL vs LTI: Performance Test - AI Shack - Tutorials for OpenCV, computer vision, deep learning, image processing, neural networks and artificial intelligence.", Aishack.in, 2016. [Online]. Available: http://aishack.in/tutorials/opencv-vs-vxl-vs-lti-performance-test/. [Accessed: 16- Nov- 2016].
 
-%http://opencv.org/about.html [1]
-%http://ltilib.sourceforge.net/doc/homepage/index.shtml [2]
-%http://public.kitware.com/vxl/doc/release/books/core/book_1.html [3]
-%http://vxl.sourceforge.net/ [4]
-%http://csus-dspace.calstate.edu/bitstream/handle/10211.9/1249/Introduction%20to%20computer%20vision.pdf?sequence=2 [5]
-%http://aishack.in/tutorials/opencv-vs-vxl-vs-lti-performance-test/[6]
+%http://www.cs.utexas.edu/~grauman/courses/spring2008/slides/Faces_demo.pdf [7]
 
+%http://docs.opencv.org/trunk/d1/dc5/tutorial_background_subtraction.html [8]
+
+%http://docs.opencv.org/3.1.0/db/d5c/tutorial_py_bg_subtraction.html [9]
+
+%http://www.cv-foundation.org/openaccess/content_cvpr_2013/papers/Li_Learning_SURF_Cascade_2013_CVPR_paper.pdf [10]
+
+%http://www.iorgsoft.com/compare/avi-vs-mp4-comparison.html[11]
+
+%http://www.makeuseof.com/tag/all-you-need-to-know-about-video-codecs-containers-and-compression/
+
+%http://www.techhive.com/article/213612/all_about_video_codecs_and_containers.html?page=2 [13]
 
 %possible sections:  
 
