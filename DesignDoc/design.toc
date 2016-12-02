@@ -16,11 +16,11 @@
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-C}3}Design Elements}{4}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Context Viewpoint}{4}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-D}1}Viewpoint Description}{4}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-D}2}Design Concerns}{4}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-D}2}Design Concerns}{5}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-D}3}Design Elements}{5}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-E}}Algorithm Viewpoint}{5}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-E}1}Viewpoint Description}{5}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-E}2}Design Concerns}{5}
-\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-E}3}Design Elements}{6}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-E}3}Design Elements}{7}
 \contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-E}4}Processing Attribute}{7}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-F}}Design Rationale}{7}
