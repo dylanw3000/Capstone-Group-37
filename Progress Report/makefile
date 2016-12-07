@@ -6,7 +6,7 @@ pdf: ps
 	rm -f progress_report.dvi
 	rm -f progress_report.log
 	rm -f progress_report.ps
-	rm -f progress_report.tox
+	rm -f progress_report.toc
 	
 ps: dvi
 	dvips -Ppdf -G0 progress_report.dvi
@@ -19,5 +19,5 @@ clean:
 	rm -f progress_report.dvi
 	rm -f progress_report.log
 	rm -f progress_report.ps
-	rm -f progress_report.tox
+	rm -f progress_report.toc
 	rm -f progress_report.pdf
