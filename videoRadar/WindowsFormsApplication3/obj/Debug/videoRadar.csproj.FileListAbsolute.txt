@@ -26,3 +26,20 @@ C:\Users\benny\Documents\Visual Studio 2015\Projects\kinect_test\WindowsFormsApp
 C:\Users\benny\Documents\Visual Studio 2015\Projects\kinect_test\WindowsFormsApplication3\bin\Debug\zh-CN\ZedGraph.resources.dll
 C:\Users\benny\Documents\Visual Studio 2015\Projects\kinect_test\WindowsFormsApplication3\obj\Debug\videoRadar.Form1.resources
 C:\Users\benny\Documents\Visual Studio 2015\Projects\kinect_test\WindowsFormsApplication3\obj\Debug\videoRadar.csprojResolveAssemblyReference.cache
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe.config
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.pdb
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Coding4Fun.Kinect.WinForm.dll
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Emgu.CV.DebuggerVisualizers.VS2015.dll
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Emgu.CV.UI.GL.dll
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Microsoft.Kinect.dll
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.dll
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Emgu.CV.UI.GL.xml
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Microsoft.Kinect.xml
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.xml
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\obj\Debug\videoRadar.Form1.resources
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\obj\Debug\videoRadar.csproj.GenerateResource.Cache
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.exe
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb
+C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar -test\WindowsFormsApplication3\obj\Debug\videoRadar.csprojResolveAssemblyReference.cache

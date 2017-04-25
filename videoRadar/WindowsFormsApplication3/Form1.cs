@@ -23,6 +23,7 @@ using Emgu.CV.Cvb;
 using Emgu.CV.UI;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
+using Emgu.CV.Cuda;
 
 namespace videoRadar
 {
@@ -37,6 +38,9 @@ namespace videoRadar
         Mat hsvImage;
         Mat upper_red_hue_range;
         Mat lower_red_hue_range;
+
+        short[] depth_data;
+        int depth_data_width;
 
         public Form1()
         {
@@ -58,24 +62,35 @@ namespace videoRadar
             CvInvoke.CvtColor(originalImage, hsvImage, ColorConversion.Bgr2Hsv);
 
             // Create range of hue value for red and then add both to the processedImage
-            CvInvoke.InRange(hsvImage, new ScalarArray(new MCvScalar(0, 155, 155)), new ScalarArray(new MCvScalar(18, 255, 255)), lower_red_hue_range);
+            CvInvoke.InRange(hsvImage, new ScalarArray(new MCvScalar(0, 155, 155)), new ScalarArray(new MCvScalar(20, 255, 255)), lower_red_hue_range);
             CvInvoke.InRange(hsvImage, new ScalarArray(new MCvScalar(160, 155, 155)), new ScalarArray(new MCvScalar(179, 255, 255)), upper_red_hue_range);
 
             CvInvoke.Add(lower_red_hue_range, upper_red_hue_range, processedImage);
-
-            //
             CvInvoke.GaussianBlur(processedImage, processedImage, new Size(3, 3), 0);
 
             Mat structuringElement = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(3, 3), new Point(-1, -1));
 
+            //CvInvoke.Threshold(processedImage, processedImage, 10, 255, ThresholdType.Binary);
+            //CvInvoke.BitwiseAnd(mask, s, mask, null);
+
             CvInvoke.Dilate(processedImage, processedImage, structuringElement, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0, 0, 0));
             CvInvoke.Erode(processedImage, processedImage, structuringElement, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0, 0, 0));
 
-            CircleF[] circles = CvInvoke.HoughCircles(processedImage, HoughType.Gradient, 2.0, processedImage.Rows / 4, 100, 50, 10, 400);
+            //Rectangle[] results;
+
+            //foreach (Rectangle )
+
+
+            //foreach (Rectangle rect in results)
+            //{
+            //    CvInvoke.Rectangle(originalImage, rect, new Bgr(Color.Red).MCvScalar);
+            //}
+
+            CircleF[] circles = CvInvoke.HoughCircles(processedImage, HoughType.Gradient, 2.0, processedImage.Rows / 4, 100, 50, 0, 0);
 
             // ***IMPORTANT*** right now it is causing a lot of lag. Currently trying to fix. ********
-            //foreach (CircleF circle in circles)
-            //{
+            foreach (CircleF circle in circles)
+            {
             //    //if (textBox1.Text != "")
             //    //{                         // if we are not on the first line in the text box
             //    //    textBox1.AppendText(Environment.NewLine);         // then insert a new line char
@@ -84,12 +99,21 @@ namespace videoRadar
             //    //textBox1.AppendText("ball position x = " + circle.Center.X.ToString().PadLeft(4) + ", y = " + circle.Center.Y.ToString().PadLeft(4) + ", radius = " + circle.Radius.ToString("###.000").PadLeft(7));
             //    //textBox1.ScrollToCaret();             // scroll down in text box so most recent line added (at the bottom) will be shown
 
-            //    CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), (int)circle.Radius, new MCvScalar(0, 0, 255), 2);
-            //    CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1);
-            //}
+                CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), (int)circle.Radius, new MCvScalar(0, 0, 255), 2);
+                CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1);
+            }
+
+            if (circles != null && circles.Length != 0)
+            {
+                this.speed_val_label.Text = ((ushort)depth_data[(depth_data_width * (int)circles[0].Center.Y) + ((int)circles[0].Center.X)]>>3).ToString();
+            }
+            
+
+            //this.speed_val_label.Text = depth_data[(depth_data_width * (int)circles[0].Center.Y) + ((int)circles[0].Center.X)].ToString();
+
 
             imageBox1.Image = originalImage;
-            imageBox2.Image = upper_red_hue_range;
+            //imageBox2.Image = upper_red_hue_range;
         }
 
 
@@ -128,11 +152,12 @@ namespace videoRadar
 
                 kSensor.Start();
                 kSensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
-                kSensor.ColorFrameReady += KSensor_ColorFrameReady;
+                //kSensor.ColorFrameReady += KSensor_ColorFrameReady;
 
                 kSensor.DepthStream.Enable();
                 kSensor.DepthStream.Range = DepthRange.Default;
-                kSensor.DepthFrameReady += KSensor_DepthFrameReady;
+                //kSensor.DepthFrameReady += KSensor_DepthFrameReady;
+                kSensor.AllFramesReady += KSensor_AllFramesReady;
 
             }
             else
@@ -169,24 +194,42 @@ namespace videoRadar
 
         private void KSensor_AllFramesReady(object sender, AllFramesReadyEventArgs e)
         {
-            using (var frame = e.OpenColorImageFrame())
-            {
-                if (frame != null)
-                {
-                    //pictureBox2.Image = CreateBitmapFromSensor(frame);
-                }
-            }
+           
 
             using (DepthImageFrame depthFrame = e.OpenDepthImageFrame())
             {
                 if(depthFrame != null)
                 {
-                    //byte[] pixels = GenerateColoredBytes(depthFrame);
+                    //pictureBox1.Image = CreateColorBitmapFromDepth(depthFrame);
+
+                    byte[] pixels = GenerateColoredBytes(depthFrame);
+
+                    depth_data_width = depthFrame.Width;
+                    depth_data = new short[depthFrame.PixelDataLength];
+
+                    depthFrame.CopyPixelDataTo(depth_data);
+
 
                     //number of bytes per row width * 4 (B,G,R, Empty)
                     int stride = depthFrame.Width * 4;
+
+                    //create image
+                    pictureBox1.Image = BitmapFromSource(BitmapSource.Create(depthFrame.Width, depthFrame.Height, 96, 96, PixelFormats.Bgr32, null, pixels, stride));
                 }
             }
+
+            using (var frame = e.OpenColorImageFrame())
+            {
+                if (frame != null)
+                {
+                    //create bitmap from sensor
+                    Bitmap bitmap = CreateBitmapFromSensor(frame);
+                    Image<Bgr, Byte> imageCV = new Image<Bgr, byte>(bitmap); //Image Class from Emgu.CV
+                    originalImage = imageCV.Mat; //This is your Image converted to Mat
+                    ProcessFrame();
+                }
+            }
+
         }
 
         private byte[] GenerateColoredBytes(DepthImageFrame depthFrame)
@@ -353,6 +396,16 @@ namespace videoRadar
             }
 
             return bitmap;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
