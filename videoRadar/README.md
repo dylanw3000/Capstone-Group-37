@@ -14,7 +14,7 @@
 <h2>Steps to compile:</h2>
 
 1. Install Kinect SDK v1.8
-2. Set up EmguCV library
+2. Install EmguCV library v 3.1.0.2504 and set up environment
 
 	(a) Set system envirnment variable path to C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\x86
 	
