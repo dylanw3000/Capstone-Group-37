@@ -17,5 +17,6 @@
 2. Set up EmguCV library
 
 	(a) Set system envirnment variable path to C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\x86
+	
 	(b) Add ImageBox (instructions - http://www.emgu.com/wiki/index.php/Add_ImageBox_Control)
 3. Open the project solution and run
