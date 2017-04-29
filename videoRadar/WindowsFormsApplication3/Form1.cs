@@ -42,6 +42,16 @@ namespace videoRadar
         short[] depth_data;
         int depth_data_width;
 
+        int x_pos;
+        int y_pos;
+        int z_pos;
+
+        int x_prev = 0, y_prev = 0, z_prev = 0;
+
+        static int tick_rate = 3;
+        int tick = tick_rate;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -91,21 +101,54 @@ namespace videoRadar
             // ***IMPORTANT*** right now it is causing a lot of lag. Currently trying to fix. ********
             foreach (CircleF circle in circles)
             {
-            //    //if (textBox1.Text != "")
-            //    //{                         // if we are not on the first line in the text box
-            //    //    textBox1.AppendText(Environment.NewLine);         // then insert a new line char
-            //    //}
+                //if (textBox1.Text != "")
+                //{                         // if we are not on the first line in the text box
+                //    textBox1.AppendText(Environment.NewLine);         // then insert a new line char
+                //}
 
-            //    //textBox1.AppendText("ball position x = " + circle.Center.X.ToString().PadLeft(4) + ", y = " + circle.Center.Y.ToString().PadLeft(4) + ", radius = " + circle.Radius.ToString("###.000").PadLeft(7));
-            //    //textBox1.ScrollToCaret();             // scroll down in text box so most recent line added (at the bottom) will be shown
+                //textBox1.AppendText("ball position x = " + circle.Center.X.ToString().PadLeft(4) + ", y = " + circle.Center.Y.ToString().PadLeft(4) + ", radius = " + circle.Radius.ToString("###.000").PadLeft(7));
+                //textBox1.ScrollToCaret();             // scroll down in text box so most recent line added (at the bottom) will be shown
 
                 CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), (int)circle.Radius, new MCvScalar(0, 0, 255), 2);
                 CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1);
             }
 
+            tick--;
             if (circles != null && circles.Length != 0)
             {
-                this.speed_val_label.Text = ((ushort)depth_data[(depth_data_width * (int)circles[0].Center.Y) + ((int)circles[0].Center.X)]>>3).ToString();
+                //this.speed_val_label.Text = ((ushort)depth_data[(depth_data_width * (int)circles[0].Center.Y) + ((int)circles[0].Center.X)]>>3).ToString();
+
+                x_pos = (int)circles[0].Center.X;
+                y_pos = (int)circles[0].Center.Y;
+                z_pos = (ushort)depth_data[(depth_data_width * (int)circles[0].Center.Y) + ((int)circles[0].Center.X)] >> 3;
+
+                double x_disp, y_disp, z_disp;
+
+                if (tick <= 0)
+                {
+
+                    if (textBox1.Text != "")
+                    {                         // if we are not on the first line in the text box
+                        textBox1.AppendText(Environment.NewLine);         // then insert a new line char
+                    }
+
+                    textBox1.AppendText("ball position x = " + x_pos.ToString() + ", y = " + y_pos.ToString() + ", z = " + z_pos.ToString());
+                    textBox1.ScrollToCaret();             // scroll down in text box so most recent line added (at the bottom) will be shown
+
+                    tick = tick_rate;
+
+                    x_disp = (x_pos - x_prev) * z_pos;  //147*2250 = 310*1097
+                    y_disp = (y_pos - y_prev) * z_pos;
+                    z_disp = Math.Pow(z_pos - z_prev, 2);  //1 ft = 304.8mm
+
+                    //this.speed_val_label.Text = "aaa";
+                    this.speed_val_label.Text = ((Math.Sqrt(Math.Pow(x_disp, 2) + Math.Pow(y_disp, 2) + Math.Pow(z_disp, 2)))/304.8/304.8 * (10)).ToString();
+                    //this.speed_val_label.Text = x_disp.ToString();
+
+                    x_prev = x_pos;
+                    y_prev = y_pos;
+                    z_prev = z_pos;
+                }
             }
             
 

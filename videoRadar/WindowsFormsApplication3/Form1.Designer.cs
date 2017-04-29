@@ -41,6 +41,7 @@
             this.imageBox1 = new Emgu.CV.UI.ImageBox();
             this.label2 = new System.Windows.Forms.Label();
             this.speed_val_label = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
@@ -55,7 +56,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1127, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1429, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -89,7 +90,7 @@
             // btn_kinect_stream
             // 
             this.btn_kinect_stream.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_kinect_stream.Location = new System.Drawing.Point(788, 529);
+            this.btn_kinect_stream.Location = new System.Drawing.Point(781, 527);
             this.btn_kinect_stream.Margin = new System.Windows.Forms.Padding(4);
             this.btn_kinect_stream.Name = "btn_kinect_stream";
             this.btn_kinect_stream.Size = new System.Drawing.Size(157, 28);
@@ -152,11 +153,20 @@
             this.speed_val_label.TabIndex = 9;
             this.speed_val_label.Text = "-";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1121, 67);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(296, 440);
+            this.textBox1.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 617);
+            this.ClientSize = new System.Drawing.Size(1429, 617);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.speed_val_label);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.imageBox1);
@@ -193,6 +203,7 @@
         private Emgu.CV.UI.ImageBox imageBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label speed_val_label;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
