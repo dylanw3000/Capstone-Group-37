@@ -15,5 +15,6 @@
 
 1. Install Kinect SDK v1.8
 2. Set up EmguCV library
+
 	(a) Set system envirnment variable path to C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\x86
 3. Open the project solution and run
