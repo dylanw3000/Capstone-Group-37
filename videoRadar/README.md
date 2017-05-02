@@ -27,5 +27,4 @@
 
 
 ##### *for testing purposes, google an image of a red ball on phone and use that.
-
 ##### *lighting plays a factor when detecting objects and may have an impact on on detecting accuracy.
