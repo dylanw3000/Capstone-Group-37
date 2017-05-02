@@ -56,7 +56,6 @@ C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsAppl
 C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsApplication3\bin\Debug\Emgu.CV.UI.GL.xml
 C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsApplication3\bin\Debug\Microsoft.Kinect.xml
 C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsApplication3\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.xml
-C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsApplication3\obj\Debug\videoRadar.csprojResolveAssemblyReference.cache
 C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsApplication3\obj\Debug\videoRadar.Form1.resources
 C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
 C:\Users\benny\Documents\Visual Studio 2015\Projects\videoRadar\WindowsFormsApplication3\obj\Debug\videoRadar.csproj.GenerateResource.Cache

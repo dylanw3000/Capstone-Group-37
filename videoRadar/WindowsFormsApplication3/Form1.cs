@@ -39,8 +39,12 @@ namespace videoRadar
         Mat upper_red_hue_range;
         Mat lower_red_hue_range;
 
+        // create text file
+        TextWriter datafile;
+
         short[] depth_data;
         int depth_data_width;
+
 
         int x_pos;
         int y_pos;
@@ -50,6 +54,9 @@ namespace videoRadar
 
         static int tick_rate = 3;
         int tick = tick_rate;
+
+        int color_save_num = 0;
+        int depth_save_num = 0;
 
 
         public Form1()
@@ -86,29 +93,11 @@ namespace videoRadar
             CvInvoke.Dilate(processedImage, processedImage, structuringElement, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0, 0, 0));
             CvInvoke.Erode(processedImage, processedImage, structuringElement, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0, 0, 0));
 
-            //Rectangle[] results;
-
-            //foreach (Rectangle )
-
-
-            //foreach (Rectangle rect in results)
-            //{
-            //    CvInvoke.Rectangle(originalImage, rect, new Bgr(Color.Red).MCvScalar);
-            //}
-
             CircleF[] circles = CvInvoke.HoughCircles(processedImage, HoughType.Gradient, 2.0, processedImage.Rows / 4, 100, 50, 0, 0);
 
-            // ***IMPORTANT*** right now it is causing a lot of lag. Currently trying to fix. ********
+            // Drawing circles around objects
             foreach (CircleF circle in circles)
             {
-                //if (textBox1.Text != "")
-                //{                         // if we are not on the first line in the text box
-                //    textBox1.AppendText(Environment.NewLine);         // then insert a new line char
-                //}
-
-                //textBox1.AppendText("ball position x = " + circle.Center.X.ToString().PadLeft(4) + ", y = " + circle.Center.Y.ToString().PadLeft(4) + ", radius = " + circle.Radius.ToString("###.000").PadLeft(7));
-                //textBox1.ScrollToCaret();             // scroll down in text box so most recent line added (at the bottom) will be shown
-
                 CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), (int)circle.Radius, new MCvScalar(0, 0, 255), 2);
                 CvInvoke.Circle(originalImage, new Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1);
             }
@@ -135,25 +124,24 @@ namespace videoRadar
                     textBox1.AppendText("ball position x = " + x_pos.ToString() + ", y = " + y_pos.ToString() + ", z = " + z_pos.ToString());
                     textBox1.ScrollToCaret();             // scroll down in text box so most recent line added (at the bottom) will be shown
 
+
                     tick = tick_rate;
 
                     x_disp = (x_pos - x_prev) * z_pos;  //147*2250 = 310*1097
                     y_disp = (y_pos - y_prev) * z_pos;
                     z_disp = Math.Pow(z_pos - z_prev, 2);  //1 ft = 304.8mm
+                    double speed = ((Math.Sqrt(Math.Pow(x_disp, 2) + Math.Pow(y_disp, 2) + Math.Pow(z_disp, 2))) / 304.8 / 304.8 * (10));
 
-                    //this.speed_val_label.Text = "aaa";
-                    this.speed_val_label.Text = ((Math.Sqrt(Math.Pow(x_disp, 2) + Math.Pow(y_disp, 2) + Math.Pow(z_disp, 2)))/304.8/304.8 * (10)).ToString();
-                    //this.speed_val_label.Text = x_disp.ToString();
+                    this.speed_val_label.Text = speed.ToString();
 
                     x_prev = x_pos;
                     y_prev = y_pos;
                     z_prev = z_pos;
+
+                    // write lines of text to the file
+                    datafile.WriteLine(x_pos.ToString() + "," + y_pos.ToString() + "," + z_pos.ToString() + "," + speed.ToString());
                 }
             }
-            
-
-            //this.speed_val_label.Text = depth_data[(depth_data_width * (int)circles[0].Center.Y) + ((int)circles[0].Center.X)].ToString();
-
 
             imageBox1.Image = originalImage;
             //imageBox2.Image = upper_red_hue_range;
@@ -178,7 +166,11 @@ namespace videoRadar
             if (kSensor != null && kSensor.IsRunning)
             {
                 kSensor.Stop();
+
             }
+
+            // close the stream     
+            datafile.Close();
 
         }
 
@@ -194,6 +186,9 @@ namespace videoRadar
                 }
 
                 kSensor.Start();
+
+                datafile = new StreamWriter("../../../data.txt");
+
                 kSensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
                 //kSensor.ColorFrameReady += KSensor_ColorFrameReady;
 
@@ -201,6 +196,11 @@ namespace videoRadar
                 kSensor.DepthStream.Range = DepthRange.Default;
                 //kSensor.DepthFrameReady += KSensor_DepthFrameReady;
                 kSensor.AllFramesReady += KSensor_AllFramesReady;
+
+                if (!Directory.Exists("./recording"))
+                {
+                    Directory.CreateDirectory("./recording");
+                }
 
             }
             else
@@ -252,6 +252,16 @@ namespace videoRadar
 
                     depthFrame.CopyPixelDataTo(depth_data);
 
+                    var arrayHandle = System.Runtime.InteropServices.GCHandle.Alloc(depth_data, System.Runtime.InteropServices.GCHandleType.Pinned);
+
+                    Bitmap bmp = new Bitmap(depthFrame.Width, depthFrame.Height, // 2x2 pixels
+                                        2*depthFrame.Width,                     // RGB32 => 8 bytes stride
+                                        System.Drawing.Imaging.PixelFormat.Format16bppArgb1555,
+                                        arrayHandle.AddrOfPinnedObject()
+                                        );
+                    //bmp.Save("./recording/depth_save_image_" + depth_save_num.ToString() + ".bmp");
+                    //depth_save_num++;
+
 
                     //number of bytes per row width * 4 (B,G,R, Empty)
                     int stride = depthFrame.Width * 4;
@@ -270,6 +280,9 @@ namespace videoRadar
                     Image<Bgr, Byte> imageCV = new Image<Bgr, byte>(bitmap); //Image Class from Emgu.CV
                     originalImage = imageCV.Mat; //This is your Image converted to Mat
                     ProcessFrame();
+
+                    //bitmap.Save("./recording/color_save_image" + color_save_num.ToString() + ".bmp");
+                    //color_save_num++;
                 }
             }
 
