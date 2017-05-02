@@ -17,11 +17,12 @@
 
 2. Install EmguCV library v 3.1.0.2504 and set up environment
 
-  (a) Set system envirnment variable path to C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\x86
+        (a) Set system envirnment variable path to C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\x86
 
-  (b) Add ImageBox (instructions - http://www.emgu.com/wiki/index.php/Add_ImageBox_Control)
+        (b) Add ImageBox (instructions - http://www.emgu.com/wiki/index.php/Add_ImageBox_Control)
 
 3. Open the project solution and run
 
 *for testing purposes, google an image of a red ball on phone and use that.
+
 *lighting plays a factor when detecting objects and may have an impact on on detecting accuracy.
