@@ -11,7 +11,7 @@
 2. EmguCV library 3.1.0.2504 - https://sourceforge.net/projects/emgucv/
 3. Used for development: Visual studio 2015 community version (.dll is specified for this version)
 
-<h2>Steps to compile:<h2>
+<h2>Steps to compile:</h2>
 
 1. Install Kinect SDK v1.8
 
