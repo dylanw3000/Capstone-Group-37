@@ -4,7 +4,6 @@
 
 1. Xbox 360 Kinect
 2. USB adapter for the Kinect
-3. Software requirements:
 
 <h2>Software requirements:</h2>
 
@@ -27,6 +26,6 @@
 3. Open the project solution and run
 
 
-<h5>*for testing purposes, google an image of a red ball on phone and use that.</h5>
+##### *for testing purposes, google an image of a red ball on phone and use that.
 
-<h5>*lighting plays a factor when detecting objects and may have an impact on on detecting accuracy.</h5>
+##### *lighting plays a factor when detecting objects and may have an impact on on detecting accuracy.
