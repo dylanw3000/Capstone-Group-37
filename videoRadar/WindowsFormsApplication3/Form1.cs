@@ -130,7 +130,8 @@ namespace videoRadar
                     x_disp = (x_pos - x_prev) * z_pos;  //147*2250 = 310*1097
                     y_disp = (y_pos - y_prev) * z_pos;
                     z_disp = Math.Pow(z_pos - z_prev, 2);  //1 ft = 304.8mm
-                    double speed = ((Math.Sqrt(Math.Pow(x_disp, 2) + Math.Pow(y_disp, 2) + Math.Pow(z_disp, 2))) / 304.8 / 304.8 * (10));
+                    double speed = ((Math.Sqrt(Math.Pow(x_disp, 2) + Math.Pow(y_disp, 2) + Math.Pow(z_disp, 2))) / Math.Pow(304.8, 2) * (30/tick_rate));
+					//sqrt(x^2+y^2+z^2) * pixels-to-feet
 
                     this.speed_val_label.Text = speed.ToString();
 
